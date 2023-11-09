@@ -1,0 +1,4 @@
+rootProject.name = 'pcbuilder'
+
+include 'pcbuilder-domain'
+include 'pcbuilder-application'
