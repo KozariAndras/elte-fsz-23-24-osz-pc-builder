@@ -1,0 +1,173 @@
+@startuml
+class User {
+id : int
+firstName : String
+lastName : String
+email : String
+phoneNumber : String
+role : String
+Getters() and Setters()
+}
+
+class Cart {
+id : int
+Getters() and Setters()
+}
+
+class Order {
+id : int
+status : String
+Getters() and Setters()
+}
+
+abstract class PCComponent {
+id : int
+name : String
+brand : String
+price : BigDecimal
+Getters() and Setters()
+}
+
+
+Motherboard --o "1" SizeType
+Case --o "1..*" SizeType
+RAM --o "1" RamSocketType
+Motherboard  --o "1" RamSocketType 
+Storage  --o "1" StorageType
+CPUCooler --o "1" CoolerType
+AmdGPU --o "1" AmdGPUSeries
+NvidiaGPU --o "1" NvidiaGPUSeries
+AmdCPU --o "1" CPUSocket
+IntelCPU --o "1" CPUSocket
+Motherboard --o "1" CPUSocket
+CPUCooler --o "1..*" CPUSocket
+
+User --* "1" Cart
+User "0..*" --o "1" Order
+Order "1..*" --o PCComponent
+Cart "0..*" --o PCComponent
+User --* "1" UserCredentials
+
+class Motherboard extends PCComponent {
+chipset : String
+Getters() and Setters()
+}
+
+class RAM extends PCComponent {
+timings : String
+speed : int
+size : int
+Getters() and Setters()
+}
+
+abstract class CPU extends PCComponent {
+cores : int
+threads : int
+coreSpeed : int
+maxCoreSpeed : int
+Getters() and Setters()
+}
+
+class AmdCPU extends CPU{
+Getters() and Setters()
+}
+
+class IntelCPU extends CPU{
+Getters() and Setters()
+}
+
+abstract class GPU extends PCComponent {
+clockSpeed : int
+memorySize : int
+Getters() and Setters()
+}
+
+class NvidiaGPU extends GPU {
+Getters() and Setters()
+}
+
+class AmdGPU extends GPU {
+Getters() and Setters()
+}
+
+
+class Storage extends PCComponent {
+size : int
+writingSpeed : int
+readingSpeed : int
+Getters() and Setters()
+}
+
+class Case extends PCComponent {
+Getters() and Setters()
+}
+
+class CPUCooler extends PCComponent {
+noise : int
+radius : int
+speed : int
+Getters() and Setters()
+}
+
+class PSU extends PCComponent {
+rating : String
+performance : int
+Getters() and Setters()
+}
+
+class UserCredentials {
+id : int
+username : String
+password : String
+Getters() and Setters()
+}
+
+enum SizeType {
+EATX : SizeType
+ATX : SizeType
+MINI-ITX : SizeType
+SizeType()
+}
+
+enum StorageType {
+SSD : StorageType
+HDD : StorageType
+StorageType()
+}
+
+enum CoolerType {
+WATER : CoolerType
+AIR : CoolerType
+CoolerType()
+}
+
+enum RamSocketType {
+DDR3 : RamSocketType
+DDR4 : RamSocketType
+DDR5 : RamSocketType
+RamSocketType()
+}
+
+enum NvidiaGPUSeries {
+RTX40 : NvidiaGPUSeries 
+RTX30 : NvidiaGPUSeries 
+RTX20 : NvidiaGPUSeries 
+GTX10 : NvidiaGPUSeries 
+NvidiaGPUSeries()
+}
+
+enum AmdGPUSeries {
+RX7000 : AmdGPUSeries
+RX6000 : AmdGPUSeries
+RX5000 : AmdGPUSeries
+AmdGPUSeries()
+}
+
+enum CPUSocket {
+AM3 : CPUSocket
+AM4 : CPUSocket
+LGA1700 : CPUSocket
+LGA1200 : CPUSocket
+CPUSocket()
+}
+@enduml
