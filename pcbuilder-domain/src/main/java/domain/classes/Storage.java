@@ -3,7 +3,6 @@ package domain.classes;
 import domain.enums.StorageType;
 import jakarta.persistence.Entity;
 
-@Entity
 public class Storage extends PCComponent{
 
     private int size;

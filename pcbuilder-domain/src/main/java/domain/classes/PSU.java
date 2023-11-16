@@ -2,7 +2,6 @@ package domain.classes;
 
 import jakarta.persistence.Entity;
 
-@Entity
 public class PSU extends PCComponent{
 
     private String rating;

@@ -3,7 +3,6 @@ package domain.classes;
 import domain.enums.SizeType;
 import jakarta.persistence.Entity;
 
-@Entity
 public class Case extends PCComponent{
 
     private SizeType sizeType;

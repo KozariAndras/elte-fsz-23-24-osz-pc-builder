@@ -3,6 +3,7 @@ package domain.classes;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "Credentials")
 public class Credential {
 
     @Id

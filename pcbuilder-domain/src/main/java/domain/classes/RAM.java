@@ -3,7 +3,6 @@ package domain.classes;
 import domain.enums.RamSocketType;
 import jakarta.persistence.Entity;
 
-@Entity
 public class RAM extends PCComponent{
 
     private String timings;

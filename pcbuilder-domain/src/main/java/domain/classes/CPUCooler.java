@@ -4,7 +4,6 @@ import domain.enums.CPUSocket;
 import domain.enums.CoolerType;
 import jakarta.persistence.Entity;
 
-@Entity
 public class CPUCooler extends PCComponent{
 
     private int noise;

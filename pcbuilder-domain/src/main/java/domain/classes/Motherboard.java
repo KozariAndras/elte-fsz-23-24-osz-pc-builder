@@ -5,7 +5,6 @@ import domain.enums.RamSocketType;
 import domain.enums.SizeType;
 import jakarta.persistence.Entity;
 
-@Entity
 public class Motherboard extends PCComponent{
 
     private String chipset;

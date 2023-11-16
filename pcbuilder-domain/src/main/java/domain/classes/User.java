@@ -1,11 +1,11 @@
 package domain.classes;
 
 import jakarta.persistence.*;
-import org.aspectj.weaver.ast.Or;
 
 import java.util.List;
 
 @Entity
+@Table(name="Users")
 public class User {
 
     @Id
@@ -15,7 +15,7 @@ public class User {
     private Credential credential;
     private String role;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany
     private List<Order> orders;
 
     public int getId() {

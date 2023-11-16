@@ -3,7 +3,6 @@ package domain.classes;
 import domain.enums.CPUSocket;
 import jakarta.persistence.Entity;
 
-@Entity
 public abstract class CPU extends PCComponent {
 
     private int cores;

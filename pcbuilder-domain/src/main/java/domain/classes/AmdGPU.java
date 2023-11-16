@@ -3,7 +3,6 @@ package domain.classes;
 import domain.enums.AmdGPUSeries;
 import jakarta.persistence.Entity;
 
-@Entity
 public class AmdGPU extends GPU{
 
     private AmdGPUSeries amdGPUSeries;
