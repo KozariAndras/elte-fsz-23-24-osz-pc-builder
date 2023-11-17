@@ -1,9 +1,10 @@
-package elte.project.pcbuilder.domain.classes;
+package elte.project.pcbuilder.domain.components;
 
+import elte.project.pcbuilder.domain.components.PCComponent;
 import jakarta.persistence.Entity;
 
 @Entity
-public class PSU extends PCComponent{
+public class PSU extends PCComponent {
 
     private String rating;
     private int performance;

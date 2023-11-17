@@ -1,10 +1,10 @@
-package elte.project.pcbuilder.domain.classes;
+package elte.project.pcbuilder.domain.components;
 
 import elte.project.pcbuilder.domain.enums.AmdGPUSeries;
 import jakarta.persistence.Entity;
 
 @Entity
-public class AmdGPU extends GPU{
+public class AmdGPU extends GPU {
 
     private AmdGPUSeries amdGPUSeries;
 

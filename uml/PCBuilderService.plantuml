@@ -1,0 +1,26 @@
+@startuml
+class AuthenticationService{
+login(username : String,password : String) : User
+register(user : User) : void
+}
+
+class CartService{
+add(component : PCComponent) : void
+remove(component : PCComponent) : void
+calculateTotalPrice() : BigDecimal
+}
+
+class OrderService{
+create(cart : Cart) : void
+remove(order : Order) : void
+complete(id : int) : void
+}
+
+class PCComponentService{
+findAllComponents() : List<PCComponent>
+findAllGPU() : List<GPU>
+findAllCPU() : List<CPU>
+findAllCase() : List<Case>
+}
+
+@enduml

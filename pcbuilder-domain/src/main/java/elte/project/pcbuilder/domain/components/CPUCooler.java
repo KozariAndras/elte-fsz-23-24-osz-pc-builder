@@ -1,11 +1,11 @@
-package elte.project.pcbuilder.domain.classes;
+package elte.project.pcbuilder.domain.components;
 
 import elte.project.pcbuilder.domain.enums.CPUSocket;
 import elte.project.pcbuilder.domain.enums.CoolerType;
 import jakarta.persistence.Entity;
 
 @Entity
-public class CPUCooler extends PCComponent{
+public class CPUCooler extends PCComponent {
 
     private int noise;
     private int radius;

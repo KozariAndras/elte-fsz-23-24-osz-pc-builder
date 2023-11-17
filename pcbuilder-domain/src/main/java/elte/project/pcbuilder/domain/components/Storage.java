@@ -1,10 +1,10 @@
-package elte.project.pcbuilder.domain.classes;
+package elte.project.pcbuilder.domain.components;
 
 import elte.project.pcbuilder.domain.enums.StorageType;
 import jakarta.persistence.Entity;
 
 @Entity
-public class Storage extends PCComponent{
+public class Storage extends PCComponent {
 
     private int size;
     private int writingSpeed;

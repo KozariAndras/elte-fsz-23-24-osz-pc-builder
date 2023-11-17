@@ -1,10 +1,13 @@
-package elte.project.pcbuilder.domain.classes;
+package elte.project.pcbuilder.domain.user;
 
+import elte.project.pcbuilder.domain.components.PCComponent;
+import elte.project.pcbuilder.domain.user.User;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
+@Table(name="Orders")
 public class Order {
 
     @Id

@@ -1,4 +1,4 @@
-package elte.project.pcbuilder.domain.classes;
+package elte.project.pcbuilder.domain.components;
 
 import elte.project.pcbuilder.domain.enums.CPUSocket;
 import elte.project.pcbuilder.domain.enums.RamSocketType;
@@ -6,7 +6,7 @@ import elte.project.pcbuilder.domain.enums.SizeType;
 import jakarta.persistence.Entity;
 
 @Entity
-public class Motherboard extends PCComponent{
+public class Motherboard extends PCComponent {
 
     private String chipset;
 

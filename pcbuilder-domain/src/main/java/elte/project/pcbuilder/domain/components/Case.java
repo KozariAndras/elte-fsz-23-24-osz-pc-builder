@@ -1,10 +1,12 @@
-package elte.project.pcbuilder.domain.classes;
+package elte.project.pcbuilder.domain.components;
 
 import elte.project.pcbuilder.domain.enums.SizeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
-public class Case extends PCComponent{
+@Table(name="Cases")
+public class Case extends PCComponent {
 
     private SizeType sizeType;
 

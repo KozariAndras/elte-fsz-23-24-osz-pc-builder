@@ -1,8 +1,10 @@
-package elte.project.pcbuilder.domain.classes;
+package elte.project.pcbuilder.domain.user;
 
+import elte.project.pcbuilder.domain.user.User;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name="Credentials")
 public class Credential {
 
     @Id

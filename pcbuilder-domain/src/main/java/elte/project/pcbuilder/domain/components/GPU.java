@@ -1,9 +1,9 @@
-package elte.project.pcbuilder.domain.classes;
+package elte.project.pcbuilder.domain.components;
 
 import jakarta.persistence.Entity;
 
 @Entity
-public class GPU extends PCComponent{
+public class GPU extends PCComponent {
 
     private int clockSpeed;
     private int memorySize;
