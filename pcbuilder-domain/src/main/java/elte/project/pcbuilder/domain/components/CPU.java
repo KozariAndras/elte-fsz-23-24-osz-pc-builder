@@ -1,10 +1,9 @@
-package elte.project.pcbuilder.domain.classes;
+package elte.project.pcbuilder.domain.components;
 
 import elte.project.pcbuilder.domain.enums.CPUSocket;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
-import jakarta.persistence.criteria.CriteriaBuilder;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)

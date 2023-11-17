@@ -1,4 +1,4 @@
-package elte.project.pcbuilder.domain.classes;
+package elte.project.pcbuilder.domain.components;
 
 import jakarta.persistence.*;
 
@@ -6,7 +6,6 @@ import java.math.BigDecimal;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class PCComponent {
-
     @Id
     @GeneratedValue
     private int id;

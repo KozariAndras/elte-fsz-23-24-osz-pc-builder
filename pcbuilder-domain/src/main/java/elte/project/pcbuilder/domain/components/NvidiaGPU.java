@@ -1,10 +1,11 @@
-package elte.project.pcbuilder.domain.classes;
+package elte.project.pcbuilder.domain.components;
 
 import elte.project.pcbuilder.domain.enums.NvidiaGPUSeries;
+import elte.project.pcbuilder.domain.components.GPU;
 import jakarta.persistence.Entity;
 
 @Entity
-public class NvidiaGPU extends GPU{
+public class NvidiaGPU extends GPU {
 
     private NvidiaGPUSeries nvidiaGPU;
 

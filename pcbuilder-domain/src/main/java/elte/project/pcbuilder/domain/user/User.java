@@ -1,4 +1,4 @@
-package elte.project.pcbuilder.domain.classes;
+package elte.project.pcbuilder.domain.user;
 
 import jakarta.persistence.*;
 

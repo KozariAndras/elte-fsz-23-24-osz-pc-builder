@@ -1,10 +1,11 @@
-package elte.project.pcbuilder.domain.classes;
+package elte.project.pcbuilder.domain.components;
 
+import elte.project.pcbuilder.domain.components.PCComponent;
 import elte.project.pcbuilder.domain.enums.RamSocketType;
 import jakarta.persistence.Entity;
 
 @Entity
-public class RAM extends PCComponent{
+public class RAM extends PCComponent {
 
     private String timings;
     private int speed;
