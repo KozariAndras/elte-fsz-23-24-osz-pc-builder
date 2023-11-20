@@ -3,6 +3,8 @@ package elte.project.pcbuilder.domain.components;
 import elte.project.pcbuilder.domain.enums.CPUSocket;
 import elte.project.pcbuilder.domain.enums.CoolerType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
 @Entity
 public class CPUCooler extends PCComponent {
@@ -10,7 +12,9 @@ public class CPUCooler extends PCComponent {
     private int noise;
     private int radius;
     private int speed;
+    @Enumerated(EnumType.STRING)
     private CoolerType coolerType;
+    @Enumerated(EnumType.STRING)
     private CPUSocket cpuSocket;
 
     public int getNoise() {

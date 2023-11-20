@@ -1,21 +1,23 @@
 package elte.project.pcbuilder.domain.components;
 
 import elte.project.pcbuilder.domain.enums.CPUSocket;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
+import elte.project.pcbuilder.domain.enums.CPUType;
+import jakarta.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class CPU extends PCComponent {
+public class CPU extends PCComponent {
 
     private int cores;
     private int threads;
     private int coreSpeed;
     private int maxCoreSpeed;
 
+    @Enumerated(EnumType.STRING)
     private CPUSocket cpuSocket;
 
+    @Enumerated(EnumType.STRING)
+    private CPUType cpuType;
 
     public int getCores() {
         return cores;
@@ -55,5 +57,13 @@ public abstract class CPU extends PCComponent {
 
     public void setCpuSocket(CPUSocket cpuSocket) {
         this.cpuSocket = cpuSocket;
+    }
+
+    public CPUType getCpuType() {
+        return cpuType;
+    }
+
+    public void setCpuType(CPUType cpuType) {
+        this.cpuType = cpuType;
     }
 }

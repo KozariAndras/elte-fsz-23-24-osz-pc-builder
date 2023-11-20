@@ -2,6 +2,8 @@ package elte.project.pcbuilder.domain.components;
 
 import elte.project.pcbuilder.domain.enums.StorageType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
 @Entity
 public class Storage extends PCComponent {
@@ -9,7 +11,7 @@ public class Storage extends PCComponent {
     private int size;
     private int writingSpeed;
     private int readingSpeed;
-
+    @Enumerated(EnumType.STRING)
     private StorageType storageType;
 
     public int getSize() {

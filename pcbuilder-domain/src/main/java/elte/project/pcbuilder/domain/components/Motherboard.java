@@ -4,16 +4,21 @@ import elte.project.pcbuilder.domain.enums.CPUSocket;
 import elte.project.pcbuilder.domain.enums.RamSocketType;
 import elte.project.pcbuilder.domain.enums.SizeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
 @Entity
 public class Motherboard extends PCComponent {
 
     private String chipset;
 
+    @Enumerated(EnumType.STRING)
     private SizeType sizeType;
 
+    @Enumerated(EnumType.STRING)
     private RamSocketType ramSocketType;
 
+    @Enumerated(EnumType.STRING)
     private CPUSocket cpuSocket;
 
 
