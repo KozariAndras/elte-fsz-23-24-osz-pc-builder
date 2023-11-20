@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 
+import java.math.BigDecimal;
+
 @Entity
 public class RAM extends PCComponent {
 
@@ -15,7 +17,13 @@ public class RAM extends PCComponent {
     @Enumerated(EnumType.STRING)
     private RamSocketType ramSocketType;
 
-
+    public RAM(String name, String brand, BigDecimal price, String timings, int speed, int size, RamSocketType ramSocketType) {
+        super(name, brand, price);
+        this.timings = timings;
+        this.speed = speed;
+        this.size = size;
+        this.ramSocketType = ramSocketType;
+    }
 
     public String getTimings() {
         return timings;

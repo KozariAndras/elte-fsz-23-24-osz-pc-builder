@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 
+import java.math.BigDecimal;
+
 @Entity
 public class CPUCooler extends PCComponent {
 
@@ -16,6 +18,15 @@ public class CPUCooler extends PCComponent {
     private CoolerType coolerType;
     @Enumerated(EnumType.STRING)
     private CPUSocket cpuSocket;
+
+    public CPUCooler(String name, String brand, BigDecimal price, int noise, int radius, int speed, CoolerType coolerType, CPUSocket cpuSocket) {
+        super(name, brand, price);
+        this.noise = noise;
+        this.radius = radius;
+        this.speed = speed;
+        this.coolerType = coolerType;
+        this.cpuSocket = cpuSocket;
+    }
 
     public int getNoise() {
         return noise;
