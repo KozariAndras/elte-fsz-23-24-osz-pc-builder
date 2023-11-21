@@ -4,19 +4,32 @@ import elte.project.pcbuilder.domain.enums.CPUSocket;
 import elte.project.pcbuilder.domain.enums.RamSocketType;
 import elte.project.pcbuilder.domain.enums.SizeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+
+import java.math.BigDecimal;
 
 @Entity
 public class Motherboard extends PCComponent {
 
     private String chipset;
 
+    @Enumerated(EnumType.STRING)
     private SizeType sizeType;
 
+    @Enumerated(EnumType.STRING)
     private RamSocketType ramSocketType;
 
+    @Enumerated(EnumType.STRING)
     private CPUSocket cpuSocket;
 
-
+    public Motherboard(String name, String brand, BigDecimal price, String chipset, SizeType sizeType, RamSocketType ramSocketType, CPUSocket cpuSocket) {
+        super(name, brand, price);
+        this.chipset = chipset;
+        this.sizeType = sizeType;
+        this.ramSocketType = ramSocketType;
+        this.cpuSocket = cpuSocket;
+    }
 
     public String getChipset() {
         return chipset;

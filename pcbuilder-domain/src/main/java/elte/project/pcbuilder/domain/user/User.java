@@ -1,5 +1,6 @@
 package elte.project.pcbuilder.domain.user;
 
+import elte.project.pcbuilder.domain.enums.Role;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -13,7 +14,8 @@ public class User {
     private int id;
     @OneToOne(mappedBy = "user")
     private Credential credential;
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @OneToMany(mappedBy = "user")
     private List<Order> orders;
@@ -34,11 +36,11 @@ public class User {
         this.credential = credential;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 

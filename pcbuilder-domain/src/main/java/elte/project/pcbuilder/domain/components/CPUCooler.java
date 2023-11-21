@@ -3,6 +3,10 @@ package elte.project.pcbuilder.domain.components;
 import elte.project.pcbuilder.domain.enums.CPUSocket;
 import elte.project.pcbuilder.domain.enums.CoolerType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+
+import java.math.BigDecimal;
 
 @Entity
 public class CPUCooler extends PCComponent {
@@ -10,8 +14,16 @@ public class CPUCooler extends PCComponent {
     private int noise;
     private int radius;
     private int speed;
+    @Enumerated(EnumType.STRING)
     private CoolerType coolerType;
-    private CPUSocket cpuSocket;
+
+    public CPUCooler(String name, String brand, BigDecimal price, int noise, int radius, int speed, CoolerType coolerType) {
+        super(name, brand, price);
+        this.noise = noise;
+        this.radius = radius;
+        this.speed = speed;
+        this.coolerType = coolerType;
+    }
 
     public int getNoise() {
         return noise;
@@ -45,11 +57,4 @@ public class CPUCooler extends PCComponent {
         this.coolerType = coolerType;
     }
 
-    public CPUSocket getCpuSocket() {
-        return cpuSocket;
-    }
-
-    public void setCpuSocket(CPUSocket cpuSocket) {
-        this.cpuSocket = cpuSocket;
-    }
 }

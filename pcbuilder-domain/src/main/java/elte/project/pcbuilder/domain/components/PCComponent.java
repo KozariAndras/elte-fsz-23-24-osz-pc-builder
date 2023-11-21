@@ -13,6 +13,11 @@ public abstract class PCComponent {
     private String brand;
     private BigDecimal price;
 
+    public PCComponent(String name, String brand, BigDecimal price) {
+        this.name = name;
+        this.brand = brand;
+        this.price = price;
+    }
 
     public int getId() {
         return id;

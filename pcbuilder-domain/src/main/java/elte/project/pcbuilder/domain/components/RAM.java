@@ -3,6 +3,10 @@ package elte.project.pcbuilder.domain.components;
 import elte.project.pcbuilder.domain.components.PCComponent;
 import elte.project.pcbuilder.domain.enums.RamSocketType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+
+import java.math.BigDecimal;
 
 @Entity
 public class RAM extends PCComponent {
@@ -10,9 +14,16 @@ public class RAM extends PCComponent {
     private String timings;
     private int speed;
     private int size;
+    @Enumerated(EnumType.STRING)
     private RamSocketType ramSocketType;
 
-
+    public RAM(String name, String brand, BigDecimal price, String timings, int speed, int size, RamSocketType ramSocketType) {
+        super(name, brand, price);
+        this.timings = timings;
+        this.speed = speed;
+        this.size = size;
+        this.ramSocketType = ramSocketType;
+    }
 
     public String getTimings() {
         return timings;

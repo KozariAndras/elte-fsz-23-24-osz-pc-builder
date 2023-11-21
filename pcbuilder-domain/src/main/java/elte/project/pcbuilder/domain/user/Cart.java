@@ -5,15 +5,15 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
-@Entity
-@Table(name="Carts")
+//@Entity
+//@Table(name="Carts")
 public class Cart {
 
-    @Id
-    @GeneratedValue
+//    @Id
+//    @GeneratedValue
     private int id;
 
-    @OneToMany
+//    @OneToMany
     private List<PCComponent> pcComponents;
 
 
