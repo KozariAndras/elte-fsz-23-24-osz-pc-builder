@@ -43,10 +43,21 @@ public class TestDataGenerator {
     }
 
     private void createRAMs() {
-
+        pcComponentRepository.save(create("Kingston","Kingston FURY Beast 16GB (2x8GB) DDR4 3200MHz",new BigDecimal(16000)
+                ,"CL16",3200,16,RamSocketType.DDR4));
+        pcComponentRepository.save(create("G.SKILL","Trident Z5 Neo RGB 32GB (2x16GB) DDR5 6000MHz",new BigDecimal(56000)
+                ,"CL30",6000,32,RamSocketType.DDR5));
+        pcComponentRepository.save(create("Kingston","Kingston FURY Renegade 32GB (2x16GB) DDR5 6000MHz",new BigDecimal(52000)
+                ,"CL32",6000,32,RamSocketType.DDR5));
     }
 
     private void createStorages() {
+        pcComponentRepository.save(create("Samsung","Samsung 980 1TB M.2 PCIe",new BigDecimal(28000)
+                ,1000,3000,3500,StorageType.SSD));
+        pcComponentRepository.save(create("Kingston","Kingston KC3000 1TB M 2 NVMe PCIe",new BigDecimal(26000)
+                ,1000,6000,7000,StorageType.SSD));
+        pcComponentRepository.save(create("Western Digital","Western Digital WD Red 3.5 4TB 5400rpm 256MB SATA3",new BigDecimal(41000)
+                ,4000,750,750,StorageType.HDD));
     }
 
     private void createCases() {
@@ -94,16 +105,16 @@ public class TestDataGenerator {
     private Case create(String brand,String name,BigDecimal price,SizeType sizeType){
         return new Case(brand,name,price,sizeType);
     }
-    private Motherboard create(String name,String brand,BigDecimal price,String chipset,SizeType size,RamSocketType ramSocket,CPUSocket cpuSocket){
+    private Motherboard create(String brand,String name,BigDecimal price,String chipset,SizeType size,RamSocketType ramSocket,CPUSocket cpuSocket){
         return new Motherboard(name,brand,price,chipset,size,ramSocket,cpuSocket);
     }
-    private PSU create(String name,String brand,BigDecimal price,String rating,int performance){
+    private PSU create(String brand,String name,BigDecimal price,String rating,int performance){
         return new PSU(name, brand, price, rating, performance);
     }
-    private RAM create(String name,String brand,BigDecimal price,String timings,int speed,int size,RamSocketType ramSocketType){
+    private RAM create(String brand,String name,BigDecimal price,String timings,int speed,int size,RamSocketType ramSocketType){
         return new RAM(name, brand, price, timings, speed, size, ramSocketType);
     }
-    private Storage create(String name,String brand,BigDecimal price,int size,int writingSpeed,int readingSpeed,StorageType storageType){
+    private Storage create(String brand,String name,BigDecimal price,int size,int writingSpeed,int readingSpeed,StorageType storageType){
         return new Storage(name, brand, price, size, writingSpeed, readingSpeed, storageType);
     }
 
