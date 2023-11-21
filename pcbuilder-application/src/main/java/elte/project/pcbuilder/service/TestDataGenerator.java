@@ -1,11 +1,7 @@
 package elte.project.pcbuilder.service;
 
-import elte.project.pcbuilder.domain.components.CPU;
-import elte.project.pcbuilder.domain.components.GPU;
-import elte.project.pcbuilder.domain.enums.CPUSocket;
-import elte.project.pcbuilder.domain.enums.CPUType;
-import elte.project.pcbuilder.domain.enums.GPUSeries;
-import elte.project.pcbuilder.domain.enums.GPUType;
+import elte.project.pcbuilder.domain.components.*;
+import elte.project.pcbuilder.domain.enums.*;
 import elte.project.pcbuilder.repository.PCComponentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -30,14 +26,24 @@ public class TestDataGenerator {
     }
 
     private void createMotherboards() {
-
+        pcComponentRepository.save(create("Asus","ASUS TUF GAMING B550M-PLUS",new BigDecimal(44000)
+                ,"B550M",SizeType.ATX,RamSocketType.DDR4,CPUSocket.AM4));
+        pcComponentRepository.save(create("MSI","MSI MAG B650 Tomahawk WIFI",new BigDecimal(82000)
+                ,"B650",SizeType.ATX,RamSocketType.DDR5,CPUSocket.AM5));
+        pcComponentRepository.save(create("Asus","ASUS TUF GAMING B760M-PLUS WIFI",new BigDecimal(58000)
+                ,"B760M",SizeType.EATX,RamSocketType.DDR4,CPUSocket.LGA1700));
+        pcComponentRepository.save(create("Asus","ASUS TUF GAMING Z690-PLUS",new BigDecimal(154000)
+                ,"Z690",SizeType.ATX,RamSocketType.DDR5,CPUSocket.LGA1700));
     }
 
     private void createPSUs() {
-
+        pcComponentRepository.save(create("Asus","Asus ROG Strix 850W Gold",new BigDecimal(55000),"GOLD",850));
+        pcComponentRepository.save(create("Seasonic","Seasonic FOCUS GX-850W Gold",new BigDecimal(70000),"GOLD",850));
+        pcComponentRepository.save(create("FSP","FSP Hydro K PRO 600W 80Plus Bronze",new BigDecimal(22000),"BRONZE",600));
     }
 
     private void createRAMs() {
+
     }
 
     private void createStorages() {
@@ -81,6 +87,24 @@ public class TestDataGenerator {
     }
     private CPU create(String brand, String name, CPUType cpuType, int cores, int threads, int coreSpeed, int maxCoreSpeed, CPUSocket cpuSocket,BigDecimal price){
         return new CPU(name, brand, price, cores, threads, coreSpeed, maxCoreSpeed, cpuSocket, cpuType);
+    }
+    private CPUCooler create(String brand, String name, BigDecimal price, int noise, int radius,int speed,CoolerType coolerType,CPUSocket cpuSocket){
+        return new CPUCooler(name,brand,price,noise,radius,speed,coolerType,cpuSocket);
+    }
+    private Case create(String brand,String name,BigDecimal price,SizeType sizeType){
+        return new Case(brand,name,price,sizeType);
+    }
+    private Motherboard create(String name,String brand,BigDecimal price,String chipset,SizeType size,RamSocketType ramSocket,CPUSocket cpuSocket){
+        return new Motherboard(name,brand,price,chipset,size,ramSocket,cpuSocket);
+    }
+    private PSU create(String name,String brand,BigDecimal price,String rating,int performance){
+        return new PSU(name, brand, price, rating, performance);
+    }
+    private RAM create(String name,String brand,BigDecimal price,String timings,int speed,int size,RamSocketType ramSocketType){
+        return new RAM(name, brand, price, timings, speed, size, ramSocketType);
+    }
+    private Storage create(String name,String brand,BigDecimal price,int size,int writingSpeed,int readingSpeed,StorageType storageType){
+        return new Storage(name, brand, price, size, writingSpeed, readingSpeed, storageType);
     }
 
 
