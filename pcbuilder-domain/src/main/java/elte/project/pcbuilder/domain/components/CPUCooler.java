@@ -16,16 +16,13 @@ public class CPUCooler extends PCComponent {
     private int speed;
     @Enumerated(EnumType.STRING)
     private CoolerType coolerType;
-    @Enumerated(EnumType.STRING)
-    private CPUSocket cpuSocket;
 
-    public CPUCooler(String name, String brand, BigDecimal price, int noise, int radius, int speed, CoolerType coolerType, CPUSocket cpuSocket) {
+    public CPUCooler(String name, String brand, BigDecimal price, int noise, int radius, int speed, CoolerType coolerType) {
         super(name, brand, price);
         this.noise = noise;
         this.radius = radius;
         this.speed = speed;
         this.coolerType = coolerType;
-        this.cpuSocket = cpuSocket;
     }
 
     public int getNoise() {
@@ -60,11 +57,4 @@ public class CPUCooler extends PCComponent {
         this.coolerType = coolerType;
     }
 
-    public CPUSocket getCpuSocket() {
-        return cpuSocket;
-    }
-
-    public void setCpuSocket(CPUSocket cpuSocket) {
-        this.cpuSocket = cpuSocket;
-    }
 }

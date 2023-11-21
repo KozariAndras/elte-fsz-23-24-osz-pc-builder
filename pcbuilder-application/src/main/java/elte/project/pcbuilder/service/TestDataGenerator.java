@@ -3,6 +3,7 @@ package elte.project.pcbuilder.service;
 import elte.project.pcbuilder.domain.components.*;
 import elte.project.pcbuilder.domain.enums.*;
 import elte.project.pcbuilder.repository.PCComponentRepository;
+import elte.project.pcbuilder.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +24,7 @@ public class TestDataGenerator {
         createPSUs();
         createRAMs();
         createStorages();
+        createCPUCoolers();
     }
 
     private void createMotherboards() {
@@ -61,6 +63,18 @@ public class TestDataGenerator {
     }
 
     private void createCases() {
+        pcComponentRepository.save(create("NZXT","NZXT H7 Flow CM-H71FG",new BigDecimal(44000),SizeType.ATX));
+        pcComponentRepository.save(create("Zalman","Zalman I3 Neo",new BigDecimal(19000),SizeType.EATX));
+        pcComponentRepository.save(create("be quiet!","be quiet! Pure Base 500DX",new BigDecimal(40000),SizeType.ATX));
+    }
+
+    private void createCPUCoolers() {
+        pcComponentRepository.save(create("ARCTIC","ARCTIC Liquid Freezer 360 II A-RGB",new BigDecimal(52000)
+                ,23,120,1800,CoolerType.WATER));
+        pcComponentRepository.save(create("Noctua","Noctua NH-D15",new BigDecimal(57000)
+                ,25,140,1500,CoolerType.AIR));
+        pcComponentRepository.save(create("Deepcool","Deepcool AK620",new BigDecimal(24600)
+                ,28,120,1500,CoolerType.AIR));
     }
 
     private void createCPUs() {
@@ -99,8 +113,8 @@ public class TestDataGenerator {
     private CPU create(String brand, String name, CPUType cpuType, int cores, int threads, int coreSpeed, int maxCoreSpeed, CPUSocket cpuSocket,BigDecimal price){
         return new CPU(name, brand, price, cores, threads, coreSpeed, maxCoreSpeed, cpuSocket, cpuType);
     }
-    private CPUCooler create(String brand, String name, BigDecimal price, int noise, int radius,int speed,CoolerType coolerType,CPUSocket cpuSocket){
-        return new CPUCooler(name,brand,price,noise,radius,speed,coolerType,cpuSocket);
+    private CPUCooler create(String brand, String name, BigDecimal price, int noise, int radius,int speed,CoolerType coolerType){
+        return new CPUCooler(name,brand,price,noise,radius,speed,coolerType);
     }
     private Case create(String brand,String name,BigDecimal price,SizeType sizeType){
         return new Case(brand,name,price,sizeType);
