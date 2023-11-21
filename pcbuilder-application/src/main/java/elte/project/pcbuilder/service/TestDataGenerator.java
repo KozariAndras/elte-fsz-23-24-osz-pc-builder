@@ -2,6 +2,9 @@ package elte.project.pcbuilder.service;
 
 import elte.project.pcbuilder.domain.components.*;
 import elte.project.pcbuilder.domain.enums.*;
+import elte.project.pcbuilder.domain.user.Credential;
+import elte.project.pcbuilder.domain.user.User;
+import elte.project.pcbuilder.repository.CredentialRepository;
 import elte.project.pcbuilder.repository.PCComponentRepository;
 import elte.project.pcbuilder.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +12,17 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 @Component
 public class TestDataGenerator {
     @Autowired
     private PCComponentRepository pcComponentRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private CredentialRepository credentialRepository;
 
     @Transactional
     public void createTestTable(){
@@ -25,6 +34,7 @@ public class TestDataGenerator {
         createRAMs();
         createStorages();
         createCPUCoolers();
+        createUsers();
     }
 
     private void createMotherboards() {
@@ -130,6 +140,30 @@ public class TestDataGenerator {
     }
     private Storage create(String brand,String name,BigDecimal price,int size,int writingSpeed,int readingSpeed,StorageType storageType){
         return new Storage(name, brand, price, size, writingSpeed, readingSpeed, storageType);
+    }
+    private void createUsers(){
+        User user = new User();
+        Credential credential = new Credential();
+        credential.setUsername("admin");
+        credential.setPassword("admin");
+        credential.setUser(user);
+        user.setCredential(credential);
+        user.setRole(Role.ADMIN);
+        user.setOrders(new ArrayList<>());
+        credentialRepository.save(credential);
+        userRepository.save(user);
+
+        user = new User();
+        credential = new Credential();
+        credential.setUsername("user");
+        credential.setPassword("user");
+        credential.setUser(user);
+        user.setCredential(credential);
+        user.setRole(Role.USER);
+        user.setOrders(new ArrayList<>());
+        credentialRepository.save(credential);
+        userRepository.save(user);
+
     }
 
 
