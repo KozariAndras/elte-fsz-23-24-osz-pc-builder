@@ -42,6 +42,7 @@ public class PcBuilderApplication {
         while(loggedInUser.getId() == 0){
             Credential credential = consoleView.getCredentials();
             loggedInUser = authenticationService.authenticateUser(credential);
+            if(loggedInUser.getId() == 0) consoleView.loginError();
         }
         consoleView.welcomeMessage(loggedInUser.getCredential().getUsername());
         consoleView.printMenu();

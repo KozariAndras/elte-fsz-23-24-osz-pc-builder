@@ -21,6 +21,12 @@ public class PCBuilderConsoleView implements PCBuilderView {
     }
 
     @Override
+    public void loginError() {
+        System.out.println("Invalid Login Credentials.");
+        System.out.println("Please try again!");
+    }
+
+    @Override
     public void welcomeMessage(String username) {
         System.out.printf("Welcome to the PCBuilder application %s!%n",username);
     }
@@ -48,6 +54,12 @@ public class PCBuilderConsoleView implements PCBuilderView {
     @Override
     public void printSelectedComponentCategory(PCComponent pcComponent) {
 
+    }
+
+    @Override
+    public String readLine() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
     }
 
 
