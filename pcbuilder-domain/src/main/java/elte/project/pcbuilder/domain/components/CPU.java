@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
+@Table(name = "CPUs")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class CPU extends PCComponent {
 
@@ -20,6 +21,9 @@ public class CPU extends PCComponent {
 
     @Enumerated(EnumType.STRING)
     private CPUType cpuType;
+
+    public CPU() {
+    }
 
     public CPU(String name, String brand, BigDecimal price, int cores, int threads, int coreSpeed, int maxCoreSpeed, CPUSocket cpuSocket, CPUType cpuType) {
         super(name, brand, price);

@@ -14,13 +14,13 @@ public class PCComponentService {
     @Autowired
     PCComponentRepository pcComponentRepository;
 
-    List<PCComponent> findAllById(int id){
+    public List<PCComponent> findAllById(int id){
         return pcComponentRepository.findAllById(id);
     }
-    List<PCComponent> findAllByBrand(String brand){
+    public List<PCComponent> findAllByBrand(String brand){
         return pcComponentRepository.findAllByBrand(brand);
     }
-    List<PCComponent> findAllByName(String name){
+    public List<PCComponent> findAllByName(String name){
         return pcComponentRepository.findAllByName(name);
     }
     List<PCComponent> findAllByPriceIsLessThanEqual(BigDecimal price){
@@ -33,6 +33,7 @@ public class PCComponentService {
     List<Case> findAllCase(){
         List<Case> cases = new ArrayList<Case>();
 
+
         for (PCComponent component : pcComponentRepository.findAll()) {
             if (component instanceof Case){
                 cases.add((Case) component);
@@ -41,15 +42,8 @@ public class PCComponentService {
         return cases;
     }
 
-    List<CPU> findAllCPU(){
-        List<CPU> cpus = new ArrayList<CPU>();
-
-        for (PCComponent component : pcComponentRepository.findAll()) {
-            if (component instanceof CPU){
-                cpus.add((CPU) component);
-            }
-        }
-        return cpus;
+    public List<CPU> findAllCPU(){
+        return pcComponentRepository.findAllCPU();
     }
 
     List<CPUCooler> findAllCPUCooler(){

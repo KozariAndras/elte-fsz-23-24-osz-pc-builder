@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 @Entity
+@Table(name = "PCComponents")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class PCComponent {
     @Id
@@ -12,6 +13,9 @@ public abstract class PCComponent {
     private String name;
     private String brand;
     private BigDecimal price;
+
+    public PCComponent() {
+    }
 
     public PCComponent(String name, String brand, BigDecimal price) {
         this.name = name;

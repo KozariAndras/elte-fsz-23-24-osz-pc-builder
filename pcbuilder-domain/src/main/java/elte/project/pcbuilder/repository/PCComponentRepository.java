@@ -1,6 +1,7 @@
 package elte.project.pcbuilder.repository;
 
 import elte.project.pcbuilder.domain.components.*;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.math.BigDecimal;
@@ -14,4 +15,6 @@ public interface PCComponentRepository extends CrudRepository<PCComponent,Intege
         List<PCComponent> findAllByPriceIsLessThanEqual(BigDecimal price);
         List<PCComponent> findAllByPriceIsGreaterThanEqual(BigDecimal price);
 
+        @Query("from PCComponent part where type(part) = CPU")
+        List<CPU> findAllCPU();
 }
