@@ -4,6 +4,7 @@ import elte.project.pcbuilder.domain.components.PCComponent;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Map;
 
 //@Entity
 //@Table(name="Carts")
@@ -14,7 +15,7 @@ public class Cart {
     private int id;
 
 //    @OneToMany
-    private List<PCComponent> pcComponents;
+    private List<PCComponent>  pcComponents;
 
 
     public int getId() {

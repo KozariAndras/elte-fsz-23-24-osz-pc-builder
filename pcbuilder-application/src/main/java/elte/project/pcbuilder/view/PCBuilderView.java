@@ -3,6 +3,8 @@ package elte.project.pcbuilder.view;
 import elte.project.pcbuilder.domain.components.PCComponent;
 import elte.project.pcbuilder.domain.user.Credential;
 
+import java.util.List;
+
 public interface PCBuilderView {
     Credential getCredentials();
 
@@ -12,6 +14,7 @@ public interface PCBuilderView {
     void printMenu();
 
     void printComponentCategories();
-    void printSelectedComponentCategory(PCComponent pcComponent);
+    PCComponent printSelectedComponentCategory(List<? extends PCComponent> pcComponents);
     String readLine();
+
 }

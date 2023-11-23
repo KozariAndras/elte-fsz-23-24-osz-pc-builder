@@ -5,6 +5,7 @@ import elte.project.pcbuilder.domain.user.User;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Entity
 @Table(name="Orders")
@@ -43,11 +44,11 @@ public class Order {
         this.status = status;
     }
 
-    public List<PCComponent> getPcComponents() {
+    public List<PCComponent>  getPcComponents() {
         return pcComponents;
     }
 
-    public void setPcComponents(List<PCComponent> pcComponents) {
+    public void setPcComponents(List<PCComponent>  pcComponents) {
         this.pcComponents = pcComponents;
     }
 }

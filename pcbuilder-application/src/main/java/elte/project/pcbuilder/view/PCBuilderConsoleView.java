@@ -52,8 +52,12 @@ public class PCBuilderConsoleView implements PCBuilderView {
     }
 
     @Override
-    public void printSelectedComponentCategory(PCComponent pcComponent) {
-
+    public PCComponent printSelectedComponentCategory(List<? extends PCComponent> pcComponentLists) {
+        for (int i = 0; i < pcComponentLists.size(); i++) {
+            System.out.printf("%d. %s Price:%d%n",i + 1,pcComponentLists.get(i).getName(),pcComponentLists.get(i).getPrice().intValue());
+        }
+        int itemNumber = Integer.parseInt(readLine());
+        return pcComponentLists.get(itemNumber - 1);
     }
 
     @Override
@@ -61,6 +65,7 @@ public class PCBuilderConsoleView implements PCBuilderView {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
+
 
 
 }

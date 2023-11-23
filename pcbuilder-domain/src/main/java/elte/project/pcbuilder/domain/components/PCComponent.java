@@ -3,6 +3,8 @@ package elte.project.pcbuilder.domain.components;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.Objects;
+
 @Entity
 @Table(name = "PCComponents")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -53,5 +55,17 @@ public abstract class PCComponent {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PCComponent component)) return false;
+        return id == component.id && Objects.equals(name, component.name) && Objects.equals(brand, component.brand) && Objects.equals(price, component.price);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, brand, price);
     }
 }

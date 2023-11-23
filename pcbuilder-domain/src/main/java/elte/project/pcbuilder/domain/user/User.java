@@ -20,6 +20,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Order> orders;
 
+
     public int getId() {
         return id;
     }
