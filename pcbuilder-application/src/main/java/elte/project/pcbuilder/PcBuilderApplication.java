@@ -63,6 +63,7 @@ public class PcBuilderApplication {
             consoleView.printMenu();
             menuInput = consoleView.readLine();
 
+
             switch (menuInput) {
                 case "1" -> {
                     System.out.println("Exiting");
@@ -113,6 +114,7 @@ public class PcBuilderApplication {
                     System.out.println("Order");
                     System.out.println("Your order costs:" + cartService.calculateTotalPrice(cart.getPcComponents()).intValue() + "ft");
                     orderService.create(cart,loggedInUser);
+                    cart.setPcComponents(new ArrayList<>());
                 }
                 default -> {
                     System.out.println("Bad Input!");
