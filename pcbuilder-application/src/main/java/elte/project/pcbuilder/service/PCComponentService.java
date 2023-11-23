@@ -31,15 +31,7 @@ public class PCComponentService {
     }
 
     List<Case> findAllCase(){
-        List<Case> cases = new ArrayList<Case>();
-
-
-        for (PCComponent component : pcComponentRepository.findAll()) {
-            if (component instanceof Case){
-                cases.add((Case) component);
-            }
-        }
-        return cases;
+        return pcComponentRepository.findAllCase();
     }
 
     public List<CPU> findAllCPU(){
@@ -47,69 +39,27 @@ public class PCComponentService {
     }
 
     List<CPUCooler> findAllCPUCooler(){
-        List<CPUCooler> cpuCoolers = new ArrayList<CPUCooler>();
-
-        for (PCComponent component : pcComponentRepository.findAll()) {
-            if (component instanceof CPUCooler){
-                cpuCoolers.add((CPUCooler) component);
-            }
-        }
-        return cpuCoolers;
+        return pcComponentRepository.findAllCPUCooler();
     }
 
     List<GPU> findAllGPU(){
-        List<GPU> gpus = new ArrayList<GPU>();
-
-        for (PCComponent component : pcComponentRepository.findAll()) {
-            if (component instanceof GPU){
-                gpus.add((GPU) component);
-            }
-        }
-        return gpus;
+        return pcComponentRepository.findAllGPU();
     }
 
     List<Motherboard> findAllMotherboard(){
-        List<Motherboard> motherboards = new ArrayList<Motherboard>();
-
-        for (PCComponent component : pcComponentRepository.findAll()) {
-            if (component instanceof Motherboard){
-                motherboards.add((Motherboard) component);
-            }
-        }
-        return motherboards;
+        return pcComponentRepository.findAllMotherboard();
     }
 
     List<PSU> findAllPSU(){
-        List<PSU> psus = new ArrayList<PSU>();
-
-        for (PCComponent component : pcComponentRepository.findAll()) {
-            if (component instanceof PSU){
-                psus.add((PSU) component);
-            }
-        }
-        return psus;
+        return pcComponentRepository.findAllPSU();
     }
 
     List<RAM> findAllRAM(){
-        List<RAM> rams = new ArrayList<RAM>();
-
-        for (PCComponent component : pcComponentRepository.findAll()) {
-            if (component instanceof RAM){
-                rams.add((RAM) component);
-            }
-        }
-        return rams;
+        return pcComponentRepository.findAllRAM();
     }
 
     List<Storage> findAllStorage(){
-        List<Storage> storages = new ArrayList<Storage>();
-
-        for (PCComponent component : pcComponentRepository.findAll()) {
-            if (component instanceof Storage){
-                storages.add((Storage) component);
-            }
-        }
-        return storages;
+        return pcComponentRepository.findAllStorage();
     }
 
 
