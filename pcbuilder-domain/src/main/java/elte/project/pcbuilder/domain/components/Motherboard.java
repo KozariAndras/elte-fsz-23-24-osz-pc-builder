@@ -23,6 +23,9 @@ public class Motherboard extends PCComponent {
     @Enumerated(EnumType.STRING)
     private CPUSocket cpuSocket;
 
+    public Motherboard() {
+    }
+
     public Motherboard(String name, String brand, BigDecimal price, String chipset, SizeType sizeType, RamSocketType ramSocketType, CPUSocket cpuSocket) {
         super(name, brand, price);
         this.chipset = chipset;

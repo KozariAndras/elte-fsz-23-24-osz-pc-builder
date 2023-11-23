@@ -11,6 +11,9 @@ public class PSU extends PCComponent {
     private String rating;
     private int performance;
 
+    public PSU() {
+    }
+
     public PSU(String name, String brand, BigDecimal price, String rating, int performance) {
         super(name, brand, price);
         this.rating = rating;

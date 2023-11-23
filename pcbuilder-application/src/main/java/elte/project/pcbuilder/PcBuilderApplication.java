@@ -38,7 +38,6 @@ public class PcBuilderApplication {
     }
 
     public void start(){
-        var list = pcComponentService.findAllCPU();
         User loggedInUser = new User();
         while(loggedInUser.getId() == 0){
             Credential credential = consoleView.getCredentials();

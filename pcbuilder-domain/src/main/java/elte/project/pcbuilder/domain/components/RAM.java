@@ -17,6 +17,9 @@ public class RAM extends PCComponent {
     @Enumerated(EnumType.STRING)
     private RamSocketType ramSocketType;
 
+    public RAM() {
+    }
+
     public RAM(String name, String brand, BigDecimal price, String timings, int speed, int size, RamSocketType ramSocketType) {
         super(name, brand, price);
         this.timings = timings;

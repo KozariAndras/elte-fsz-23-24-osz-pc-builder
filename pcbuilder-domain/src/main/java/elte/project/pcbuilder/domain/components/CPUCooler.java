@@ -17,6 +17,9 @@ public class CPUCooler extends PCComponent {
     @Enumerated(EnumType.STRING)
     private CoolerType coolerType;
 
+    public CPUCooler() {
+    }
+
     public CPUCooler(String name, String brand, BigDecimal price, int noise, int radius, int speed, CoolerType coolerType) {
         super(name, brand, price);
         this.noise = noise;

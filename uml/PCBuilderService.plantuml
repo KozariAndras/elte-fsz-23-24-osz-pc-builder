@@ -1,6 +1,6 @@
 @startuml
 class AuthenticationService{
-login(username : String,password : String) : User
+login(credential : Credential) : User
 register(user : User) : void
 }
 

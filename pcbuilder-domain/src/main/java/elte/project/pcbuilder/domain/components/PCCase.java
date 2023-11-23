@@ -14,6 +14,9 @@ public class PCCase extends PCComponent {
     @Enumerated(EnumType.STRING)
     private SizeType sizeType;
 
+    public PCCase() {
+    }
+
     public PCCase(String name, String brand, BigDecimal price, SizeType sizeType) {
         super(name, brand, price);
         this.sizeType = sizeType;

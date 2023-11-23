@@ -18,6 +18,9 @@ public class GPU extends PCComponent {
     @Enumerated(EnumType.STRING)
     private GPUSeries gpuSeries;
 
+    public GPU() {
+    }
+
     public GPU(String name, String brand, BigDecimal price, int clockSpeed, int memorySize, GPUType gpuType, GPUSeries gpuSeries) {
         super(name, brand, price);
         this.clockSpeed = clockSpeed;

@@ -30,7 +30,7 @@ public class PCComponentService {
         return pcComponentRepository.findAllByPriceIsGreaterThanEqual(price);
     }
 
-    List<PCCase> findAllCase(){
+    public List<PCCase> findAllCase(){
         return pcComponentRepository.findAllCase();
     }
 
@@ -38,35 +38,33 @@ public class PCComponentService {
         return pcComponentRepository.findAllCPU();
     }
 
-    List<CPUCooler> findAllCPUCooler(){
+    public List<CPUCooler> findAllCPUCooler(){
         return pcComponentRepository.findAllCPUCooler();
     }
 
-    List<GPU> findAllGPU(){
+    public List<GPU> findAllGPU(){
         return pcComponentRepository.findAllGPU();
     }
 
-    List<Motherboard> findAllMotherboard(){
+    public List<Motherboard> findAllMotherboard(){
         return pcComponentRepository.findAllMotherboard();
     }
 
-    List<PSU> findAllPSU(){
+    public List<PSU> findAllPSU(){
         return pcComponentRepository.findAllPSU();
     }
 
-    List<RAM> findAllRAM(){
+    public List<RAM> findAllRAM(){
         return pcComponentRepository.findAllRAM();
     }
 
-    List<Storage> findAllStorage(){
+    public List<Storage> findAllStorage(){
         return pcComponentRepository.findAllStorage();
     }
 
 
     public List<String> getAllCategories(){
         List<String> categories = new ArrayList<>();
-
-
         return categories;
     }
 

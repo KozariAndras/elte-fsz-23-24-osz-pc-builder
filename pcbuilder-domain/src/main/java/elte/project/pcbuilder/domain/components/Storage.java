@@ -16,6 +16,9 @@ public class Storage extends PCComponent {
     @Enumerated(EnumType.STRING)
     private StorageType storageType;
 
+    public Storage() {
+    }
+
     public Storage(String name, String brand, BigDecimal price, int size, int writingSpeed, int readingSpeed, StorageType storageType) {
         super(name, brand, price);
         this.size = size;
