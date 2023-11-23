@@ -17,7 +17,7 @@ public class Order {
     @ManyToOne
     private User user;
     private String status;
-    @OneToMany
+    @ManyToMany
     private List<PCComponent> pcComponents;
 
     public int getId() {
