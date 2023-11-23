@@ -30,7 +30,7 @@ public class PCComponentService {
         return pcComponentRepository.findAllByPriceIsGreaterThanEqual(price);
     }
 
-    List<Case> findAllCase(){
+    List<PCCase> findAllCase(){
         return pcComponentRepository.findAllCase();
     }
 

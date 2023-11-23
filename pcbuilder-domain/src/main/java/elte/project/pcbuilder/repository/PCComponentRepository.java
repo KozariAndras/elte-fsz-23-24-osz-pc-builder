@@ -15,8 +15,8 @@ public interface PCComponentRepository extends CrudRepository<PCComponent,Intege
         List<PCComponent> findAllByPriceIsLessThanEqual(BigDecimal price);
         List<PCComponent> findAllByPriceIsGreaterThanEqual(BigDecimal price);
 
-        @Query("from PCComponent part where type(part) = Case")
-        List<Case> findAllCase();
+        @Query("from PCComponent part where type(part) = PCCase")
+        List<PCCase> findAllCase();
         @Query("from PCComponent part where type(part) = CPU")
         List<CPU> findAllCPU();
         @Query("from PCComponent part where type(part) = CPUCooler")

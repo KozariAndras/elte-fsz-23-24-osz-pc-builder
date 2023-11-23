@@ -10,11 +10,11 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name="Cases")
-public class Case extends PCComponent {
+public class PCCase extends PCComponent {
     @Enumerated(EnumType.STRING)
     private SizeType sizeType;
 
-    public Case(String name, String brand, BigDecimal price, SizeType sizeType) {
+    public PCCase(String name, String brand, BigDecimal price, SizeType sizeType) {
         super(name, brand, price);
         this.sizeType = sizeType;
     }
