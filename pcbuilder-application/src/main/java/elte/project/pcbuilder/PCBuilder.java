@@ -1,17 +1,16 @@
 package elte.project.pcbuilder;
 
 import elte.project.pcbuilder.domain.components.PCComponent;
-import elte.project.pcbuilder.domain.user.Cart;
 import elte.project.pcbuilder.domain.user.Credential;
+import elte.project.pcbuilder.domain.user.Order;
 import elte.project.pcbuilder.domain.user.User;
 import elte.project.pcbuilder.service.*;
 import elte.project.pcbuilder.view.PCBuilderView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.annotation.SessionScope;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class PCBuilder implements CommandLineRunner {
@@ -98,6 +97,10 @@ public class PCBuilder implements CommandLineRunner {
                     System.out.println("Your order costs:" + cartService.calculateTotalPrice().intValueExact() + "ft.");
                     orderService.create(cartService.getCartItems(),loggedInUser);
 
+                }
+                case "4" -> {
+                    List<Order> orderList = orderService.listOrdersByUser(loggedInUser);
+                    consoleView.printOrders(orderList);
                 }
                 default -> System.out.println("Bad Input!");
             }

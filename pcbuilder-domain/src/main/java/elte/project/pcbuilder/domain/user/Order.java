@@ -41,11 +41,11 @@ public class Order {
         this.status = status;
     }
 
-    public List<OrderItem> getCartItems() {
+    public List<OrderItem> getOrderItems() {
         return orderItems;
     }
 
-    public void setCartItems(List<OrderItem> orderItems) {
+    public void setOrderItems(List<OrderItem> orderItems) {
         this.orderItems = orderItems;
     }
 }

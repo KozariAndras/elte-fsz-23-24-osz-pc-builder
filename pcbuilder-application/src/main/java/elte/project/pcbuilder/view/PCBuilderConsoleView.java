@@ -2,8 +2,9 @@ package elte.project.pcbuilder.view;
 
 import elte.project.pcbuilder.domain.components.PCComponent;
 import elte.project.pcbuilder.domain.user.Credential;
+import elte.project.pcbuilder.domain.user.Order;
+import elte.project.pcbuilder.domain.user.OrderItem;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 
@@ -36,7 +37,7 @@ public class PCBuilderConsoleView implements PCBuilderView {
         System.out.println("1. Exit");
         System.out.println("2. Buy");
         System.out.println("3. Order");
-
+        System.out.println("4. Check orders");
     }
 
 
@@ -67,6 +68,17 @@ public class PCBuilderConsoleView implements PCBuilderView {
         return scanner.nextLine();
     }
 
+    @Override
+    public void printOrders(List<Order> orderList) {
+        for (int i = 0; i < orderList.size(); i++) {
+            List<OrderItem> orderItems = orderList.get(i).getOrderItems();
+            System.out.println("Order -" + (i+1));
+            for (int j = 0; j < orderItems.size(); j++) {
+                OrderItem currentOrderItem = orderItems.get(j);
+                System.out.println("    "+currentOrderItem.toString());
+            }
+        }
+    }
 
 
 }

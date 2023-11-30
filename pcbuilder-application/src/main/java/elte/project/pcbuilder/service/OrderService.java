@@ -7,6 +7,7 @@ import elte.project.pcbuilder.repository.CartItemRepository;
 import elte.project.pcbuilder.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,7 +23,7 @@ public class OrderService {
         Order order = new Order();
         order.setStatus("Incomplete");
         order.setUser(user);
-        order.setCartItems(items);
+        order.setOrderItems(items);
 
         orderRepository.save(order);
         items.forEach(cartItem -> {
@@ -37,11 +38,20 @@ public class OrderService {
         orderRepository.delete(order);
     }
 
+    @Transactional
+    public List<Order> listOrdersByUser(User user){
+        List<Order> orderList = orderRepository.findOrdersByUser(user);
+        orderList.forEach(order -> order.getOrderItems().size());
+        return orderList;
+    }
+
+
     public void completeOrder(int id){
         Optional<Order> order = orderRepository.findOrderById(id);
         if(order.isPresent()){
             order.get().setStatus("Completed");
             orderRepository.save(order.get());
+
         }
     }
 
