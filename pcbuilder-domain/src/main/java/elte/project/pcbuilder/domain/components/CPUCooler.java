@@ -7,6 +7,7 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 @Entity
 public class CPUCooler extends PCComponent {
@@ -60,4 +61,16 @@ public class CPUCooler extends PCComponent {
         this.coolerType = coolerType;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CPUCooler cpuCooler)) return false;
+        if (!super.equals(o)) return false;
+        return noise == cpuCooler.noise && radius == cpuCooler.radius && speed == cpuCooler.speed && coolerType == cpuCooler.coolerType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), noise, radius, speed, coolerType);
+    }
 }

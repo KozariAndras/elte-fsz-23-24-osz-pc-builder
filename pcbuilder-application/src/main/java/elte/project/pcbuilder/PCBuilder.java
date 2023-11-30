@@ -8,16 +8,13 @@ import elte.project.pcbuilder.service.*;
 import elte.project.pcbuilder.view.PCBuilderView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
 
 import java.util.ArrayList;
 
-
-@SpringBootApplication
-public class PcBuilderApplication {
+@Component
+public class PCBuilder implements CommandLineRunner {
     @Autowired
     private TestDataGenerator dataGenerator;
     @Autowired
@@ -31,26 +28,14 @@ public class PcBuilderApplication {
     @Autowired
     private OrderService orderService;
 
-
-
-    public static void main(String[] args) {
-        SpringApplication.run(PcBuilderApplication.class,args);
-    }
-
-
-    @Bean
-    public CommandLineRunner commandLineRunner(ApplicationContext ctx){
-        return args -> {
-            dataGenerator.createTestTable();
-            start();
-        };
+    @Override
+    public void run(String... args) throws Exception {
+        dataGenerator.createTestTable();
+        start();
     }
 
     public void start(){
         User loggedInUser = new User();
-        Cart cart = new Cart();
-        cart.setPcComponents(new ArrayList<>());
-
         while(loggedInUser.getId() == 0){
             Credential credential = consoleView.getCredentials();
             loggedInUser = authenticationService.authenticateUser(credential);
@@ -75,56 +60,49 @@ public class PcBuilderApplication {
                     switch (selectedCategory){
                         case "1" -> {
                             selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findAllGPU());
-                            cartService.add(selectedComponent,cart.getPcComponents());
+                            cartService.add(selectedComponent);
                         }
                         case "2" -> {
                             selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findAllCPU());
-                            cartService.add(selectedComponent,cart.getPcComponents());
+                            cartService.add(selectedComponent);
                         }
                         case "3" -> {
                             selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findAllCPUCooler());
-                            cartService.add(selectedComponent,cart.getPcComponents());
+                            cartService.add(selectedComponent);
                         }
                         case "4" -> {
                             selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findAllMotherboard());
-                            cartService.add(selectedComponent,cart.getPcComponents());
+                            cartService.add(selectedComponent);
                         }
                         case "5" -> {
                             selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findAllPSU());
-                            cartService.add(selectedComponent,cart.getPcComponents());
+                            cartService.add(selectedComponent);
                         }
                         case "6" -> {
                             selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findAllRAM());
-                            cartService.add(selectedComponent,cart.getPcComponents());
+                            cartService.add(selectedComponent);
                         }
                         case "7" -> {
                             selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findAllStorage());
-                            cartService.add(selectedComponent,cart.getPcComponents());
+                            cartService.add(selectedComponent);
                         }
                         case "8" -> {
                             selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findAllCase());
-                            cartService.add(selectedComponent,cart.getPcComponents());
+                            cartService.add(selectedComponent);
                         }
-                        default -> {
-                            System.out.println("Wrong Input!");
-                        }
+                        default -> System.out.println("Wrong Input!");
                     }
                 }
                 case "3" -> {
                     System.out.println("Order");
-                    System.out.println("Your order costs:" + cartService.calculateTotalPrice(cart.getPcComponents()).intValue() + "ft");
-                    orderService.create(cart,loggedInUser);
-                    cart.setPcComponents(new ArrayList<>());
+                    System.out.println("Your order costs:" + cartService.calculateTotalPrice().intValueExact() + "ft.");
+                    orderService.create(cartService.getCartItems(),loggedInUser);
+
                 }
-                default -> {
-                    System.out.println("Bad Input!");
-                }
+                default -> System.out.println("Bad Input!");
             }
         }
 
 
     }
-
-
-
 }

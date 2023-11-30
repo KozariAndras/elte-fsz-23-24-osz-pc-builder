@@ -36,6 +36,7 @@ public class PCBuilderConsoleView implements PCBuilderView {
         System.out.println("1. Exit");
         System.out.println("2. Buy");
         System.out.println("3. Order");
+
     }
 
 

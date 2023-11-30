@@ -4,6 +4,7 @@ import elte.project.pcbuilder.domain.components.PCComponent;
 import jakarta.persistence.Entity;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 @Entity
 public class PSU extends PCComponent {
@@ -34,5 +35,18 @@ public class PSU extends PCComponent {
 
     public void setPerformance(int performance) {
         this.performance = performance;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PSU psu)) return false;
+        if (!super.equals(o)) return false;
+        return performance == psu.performance && Objects.equals(rating, psu.rating);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), rating, performance);
     }
 }
