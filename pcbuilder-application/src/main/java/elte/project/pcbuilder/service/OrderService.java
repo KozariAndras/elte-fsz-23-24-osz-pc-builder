@@ -29,6 +29,7 @@ public class OrderService {
             cartItem.setOrder(order);
             cartItemRepository.save(cartItem);
         });
+        items.clear();
 
     }
 
