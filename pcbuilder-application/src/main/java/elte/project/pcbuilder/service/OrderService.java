@@ -51,7 +51,6 @@ public class OrderService {
         if(order.isPresent()){
             order.get().setStatus("Completed");
             orderRepository.save(order.get());
-
         }
     }
 

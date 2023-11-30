@@ -38,6 +38,7 @@ public class PCBuilderConsoleView implements PCBuilderView {
         System.out.println("2. Buy");
         System.out.println("3. Order");
         System.out.println("4. Check orders");
+        System.out.println("5. Delete order");
     }
 
 
@@ -54,12 +55,12 @@ public class PCBuilderConsoleView implements PCBuilderView {
     }
 
     @Override
-    public PCComponent printSelectedComponentCategory(List<? extends PCComponent> pcComponentLists) {
+    public PCComponent printSelectedComponentCategory(List<? extends PCComponent> pcComponentLists) throws IndexOutOfBoundsException {
         for (int i = 0; i < pcComponentLists.size(); i++) {
             System.out.printf("%d. %s Price:%d%n",i + 1,pcComponentLists.get(i).getName(),pcComponentLists.get(i).getPrice().intValue());
         }
-        int itemNumber = Integer.parseInt(readLine());
-        return pcComponentLists.get(itemNumber - 1);
+        int itemNumber = Integer.parseInt(readLine()) - 1;
+        return pcComponentLists.get(itemNumber);
     }
 
     @Override
@@ -70,14 +71,26 @@ public class PCBuilderConsoleView implements PCBuilderView {
 
     @Override
     public void printOrders(List<Order> orderList) {
-        for (int i = 0; i < orderList.size(); i++) {
-            List<OrderItem> orderItems = orderList.get(i).getOrderItems();
-            System.out.println("Order -" + (i+1));
-            for (int j = 0; j < orderItems.size(); j++) {
-                OrderItem currentOrderItem = orderItems.get(j);
-                System.out.println("    "+currentOrderItem.toString());
+        if(orderList.isEmpty()){
+            System.out.println("You don't have any orders.");
+        } else {
+            for (int i = 0; i < orderList.size(); i++) {
+                List<OrderItem> orderItems = orderList.get(i).getOrderItems();
+                System.out.println("Order - " + (i+1));
+                for (int j = 0; j < orderItems.size(); j++) {
+                    OrderItem currentOrderItem = orderItems.get(j);
+                    System.out.println("    "+currentOrderItem.toString());
+                }
             }
         }
+
+    }
+
+    @Override
+    public Order getOrderForDelete(List<Order> orderList) {
+        printOrders(orderList);
+        int i = Integer.parseInt(readLine()) - 1;
+        return orderList.get(i);
     }
 
 

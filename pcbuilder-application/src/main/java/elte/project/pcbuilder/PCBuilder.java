@@ -4,6 +4,7 @@ import elte.project.pcbuilder.domain.components.PCComponent;
 import elte.project.pcbuilder.domain.user.Credential;
 import elte.project.pcbuilder.domain.user.Order;
 import elte.project.pcbuilder.domain.user.User;
+import elte.project.pcbuilder.repository.CartItemRepository;
 import elte.project.pcbuilder.service.*;
 import elte.project.pcbuilder.view.PCBuilderView;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,9 +50,7 @@ public class PCBuilder implements CommandLineRunner {
 
 
             switch (menuInput) {
-                case "1" -> {
-                    System.out.println("Exiting");
-                }
+                case "1" -> System.out.println("Exiting");
                 case "2" -> {
                     consoleView.printComponentCategories();
                     String selectedCategory = consoleView.readLine();
@@ -93,19 +92,28 @@ public class PCBuilder implements CommandLineRunner {
                     }
                 }
                 case "3" -> {
-                    System.out.println("Order");
-                    System.out.println("Your order costs:" + cartService.calculateTotalPrice().intValueExact() + "ft.");
-                    orderService.create(cartService.getCartItems(),loggedInUser);
+                    System.out.println("Order:");
+                    if(cartService.calculateTotalPrice().intValueExact() != 0){
+                        System.out.println("Your order costs:" + cartService.calculateTotalPrice().intValueExact() + "ft.");
+                        orderService.create(cartService.getCartItems(),loggedInUser);
+                    }else {
+                        System.out.println("Your cart is empty.");
+                    }
 
                 }
                 case "4" -> {
                     List<Order> orderList = orderService.listOrdersByUser(loggedInUser);
                     consoleView.printOrders(orderList);
                 }
+                case "5" -> {
+                    List<Order> orderList = orderService.listOrdersByUser(loggedInUser);
+                    Order orderForDelete = consoleView.getOrderForDelete(orderList);
+
+                    orderService.remove(orderForDelete);
+                }
                 default -> System.out.println("Bad Input!");
             }
         }
-
 
     }
 }

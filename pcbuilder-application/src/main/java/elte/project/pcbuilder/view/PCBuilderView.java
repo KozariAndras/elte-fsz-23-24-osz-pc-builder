@@ -16,4 +16,6 @@ public interface PCBuilderView {
     String readLine();
 
     void printOrders(List<Order> orderList);
+
+    Order getOrderForDelete(List<Order> orderList);
 }
