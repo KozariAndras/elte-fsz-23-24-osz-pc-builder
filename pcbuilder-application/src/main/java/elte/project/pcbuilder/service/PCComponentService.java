@@ -63,10 +63,5 @@ public class PCComponentService {
     }
 
 
-    public List<String> getAllCategories(){
-        List<String> categories = new ArrayList<>();
-        return categories;
-    }
-
 
 }

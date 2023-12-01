@@ -4,7 +4,6 @@ import elte.project.pcbuilder.domain.components.PCComponent;
 import elte.project.pcbuilder.domain.user.Credential;
 import elte.project.pcbuilder.domain.user.Order;
 import elte.project.pcbuilder.domain.user.User;
-import elte.project.pcbuilder.repository.CartItemRepository;
 import elte.project.pcbuilder.service.*;
 import elte.project.pcbuilder.view.PCBuilderView;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,8 +91,8 @@ public class PCBuilder implements CommandLineRunner {
                     }
                 }
                 case "3" -> {
-                    System.out.println("Order:");
                     if(cartService.calculateTotalPrice().intValueExact() != 0){
+                        System.out.println("Order:");
                         System.out.println("Your order costs:" + cartService.calculateTotalPrice().intValueExact() + "ft.");
                         orderService.create(cartService.getCartItems(),loggedInUser);
                     }else {
@@ -102,11 +101,19 @@ public class PCBuilder implements CommandLineRunner {
 
                 }
                 case "4" -> {
-                    List<Order> orderList = orderService.listOrdersByUser(loggedInUser);
-                    consoleView.printOrders(orderList);
+                    if(!cartService.getCartItems().isEmpty()){
+                        System.out.println("Cart:");
+                        consoleView.listOrderItems(cartService.getCartItems());
+                    } else {
+                        System.out.println("Your cart is empty.");
+                    }
                 }
                 case "5" -> {
-                    List<Order> orderList = orderService.listOrdersByUser(loggedInUser);
+                    List<Order> orderList = orderService.getOrdersByUser(loggedInUser);
+                    consoleView.printOrders(orderList);
+                }
+                case "6" -> {
+                    List<Order> orderList = orderService.getOrdersByUser(loggedInUser);
                     Order orderForDelete = consoleView.getOrderForDelete(orderList);
 
                     orderService.remove(orderForDelete);

@@ -1,5 +1,6 @@
 package elte.project.pcbuilder.domain.user;
 
+import elte.project.pcbuilder.domain.enums.OrderStatusType;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -13,7 +14,8 @@ public class Order {
     private int id;
     @ManyToOne
     private User user;
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private OrderStatusType status;
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems;
 
@@ -33,11 +35,11 @@ public class Order {
         this.user = user;
     }
 
-    public String getStatus() {
+    public OrderStatusType getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(OrderStatusType status) {
         this.status = status;
     }
 

@@ -35,10 +35,11 @@ public class PCBuilderConsoleView implements PCBuilderView {
     @Override
     public void printMenu() {
         System.out.println("1. Exit");
-        System.out.println("2. Buy");
+        System.out.println("2. Check components");
         System.out.println("3. Order");
-        System.out.println("4. Check orders");
-        System.out.println("5. Delete order");
+        System.out.println("4. Cart");
+        System.out.println("5. Check orders");
+        System.out.println("6. Delete order");
     }
 
 
@@ -77,10 +78,7 @@ public class PCBuilderConsoleView implements PCBuilderView {
             for (int i = 0; i < orderList.size(); i++) {
                 List<OrderItem> orderItems = orderList.get(i).getOrderItems();
                 System.out.println("Order - " + (i+1));
-                for (int j = 0; j < orderItems.size(); j++) {
-                    OrderItem currentOrderItem = orderItems.get(j);
-                    System.out.println("    "+currentOrderItem.toString());
-                }
+                listOrderItems(orderItems);
             }
         }
 
@@ -91,6 +89,13 @@ public class PCBuilderConsoleView implements PCBuilderView {
         printOrders(orderList);
         int i = Integer.parseInt(readLine()) - 1;
         return orderList.get(i);
+    }
+
+    @Override
+    public void listOrderItems(List<OrderItem> cartItems) {
+        for (OrderItem currentOrderItem : cartItems) {
+            System.out.println("    " + currentOrderItem.toString());
+        }
     }
 
 

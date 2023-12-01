@@ -1,5 +1,6 @@
 package elte.project.pcbuilder.service;
 
+import elte.project.pcbuilder.domain.enums.OrderStatusType;
 import elte.project.pcbuilder.domain.user.OrderItem;
 import elte.project.pcbuilder.domain.user.Order;
 import elte.project.pcbuilder.domain.user.User;
@@ -21,7 +22,7 @@ public class OrderService {
 
     public void create(List<OrderItem> items, User user){
         Order order = new Order();
-        order.setStatus("Incomplete");
+        order.setStatus(OrderStatusType.INCOMPLETE);
         order.setUser(user);
         order.setOrderItems(items);
 
@@ -39,17 +40,17 @@ public class OrderService {
     }
 
     @Transactional
-    public List<Order> listOrdersByUser(User user){
+    public List<Order> getOrdersByUser(User user){
         List<Order> orderList = orderRepository.findOrdersByUser(user);
         orderList.forEach(order -> order.getOrderItems().size());
         return orderList;
     }
 
 
-    public void completeOrder(int id){
+    public void complete(int id){
         Optional<Order> order = orderRepository.findOrderById(id);
         if(order.isPresent()){
-            order.get().setStatus("Completed");
+            order.get().setStatus(OrderStatusType.COMPLETED);
             orderRepository.save(order.get());
         }
     }

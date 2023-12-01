@@ -25,9 +25,9 @@ public class CartService {
     }
 
     public BigDecimal calculateTotalPrice(){
-        BigDecimal sum = new BigDecimal(0);
+        BigDecimal sum=BigDecimal.ZERO;
         for(OrderItem item : orderItems){
-            BigDecimal totalPriceOfItem = item.getPcComponent().getPrice().multiply(new BigDecimal(item.getAmount()));
+            BigDecimal totalPriceOfItem = item.getPcComponent().getPrice().multiply(BigDecimal.valueOf(item.getAmount()));
             sum = sum.add(totalPriceOfItem);
         }
         return sum;
