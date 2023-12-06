@@ -1,10 +1,9 @@
 package elte.project.pcbuilder.service;
 
+import elte.project.pcbuilder.domain.components.PCComponent;
 import elte.project.pcbuilder.domain.enums.OrderStatusType;
-import elte.project.pcbuilder.domain.user.OrderItem;
 import elte.project.pcbuilder.domain.user.Order;
 import elte.project.pcbuilder.domain.user.User;
-import elte.project.pcbuilder.repository.CartItemRepository;
 import elte.project.pcbuilder.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,20 +16,15 @@ import java.util.Optional;
 public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
-    @Autowired
-    private CartItemRepository cartItemRepository;
 
-    public void create(List<OrderItem> items, User user){
+    public void create(List<PCComponent> items, User user){
         Order order = new Order();
         order.setStatus(OrderStatusType.INCOMPLETE);
         order.setUser(user);
-        order.setOrderItems(items);
+        order.setPcComponents(items);
 
         orderRepository.save(order);
-        items.forEach(cartItem -> {
-            cartItem.setOrder(order);
-            cartItemRepository.save(cartItem);
-        });
+
         items.clear();
 
     }
@@ -42,7 +36,7 @@ public class OrderService {
     @Transactional
     public List<Order> getOrdersByUser(User user){
         List<Order> orderList = orderRepository.findOrdersByUser(user);
-        orderList.forEach(order -> order.getOrderItems().size());
+        orderList.forEach(order -> order.getPcComponents().size());
         return orderList;
     }
 

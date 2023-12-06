@@ -1,17 +1,13 @@
 package elte.project.pcbuilder.domain.user;
 
+import elte.project.pcbuilder.domain.components.PCComponent;
+
 import java.util.List;
 
-//@Entity
-//@Table(name="Carts")
 public class Cart {
 
-//    @Id
-//    @GeneratedValue
     private int id;
-
-//    @OneToMany
-    private List<OrderItem> orderItems;
+    private List<PCComponent> pcComponents;
 
 
     public int getId() {
@@ -22,11 +18,11 @@ public class Cart {
         this.id = id;
     }
 
-    public List<OrderItem> getCartItems() {
-        return orderItems;
+    public List<PCComponent> getPcComponents() {
+        return pcComponents;
     }
 
-    public void setCartItems(List<OrderItem> orderItems) {
-        this.orderItems = orderItems;
+    public void setPcComponents(List<PCComponent> pcComponents) {
+        this.pcComponents = pcComponents;
     }
 }

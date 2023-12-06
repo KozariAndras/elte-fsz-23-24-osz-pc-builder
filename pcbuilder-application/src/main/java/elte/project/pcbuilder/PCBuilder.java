@@ -94,16 +94,16 @@ public class PCBuilder implements CommandLineRunner {
                     if(cartService.calculateTotalPrice().intValueExact() != 0){
                         System.out.println("Order:");
                         System.out.println("Your order costs:" + cartService.calculateTotalPrice().intValueExact() + "ft.");
-                        orderService.create(cartService.getCartItems(),loggedInUser);
+                        orderService.create(cartService.getPcComponents(),loggedInUser);
                     }else {
                         System.out.println("Your cart is empty.");
                     }
 
                 }
                 case "4" -> {
-                    if(!cartService.getCartItems().isEmpty()){
+                    if(!cartService.getPcComponents().isEmpty()){
                         System.out.println("Cart:");
-                        consoleView.listOrderItems(cartService.getCartItems());
+                        consoleView.listOrderItems(cartService.getPcComponents());
                     } else {
                         System.out.println("Your cart is empty.");
                     }

@@ -68,4 +68,14 @@ public abstract class PCComponent {
     public int hashCode() {
         return Objects.hash(id, name, brand, price);
     }
+
+    @Override
+    public String toString() {
+        return "PCComponent{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", brand='" + brand + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }

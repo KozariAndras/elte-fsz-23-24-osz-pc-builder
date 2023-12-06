@@ -3,7 +3,6 @@ package elte.project.pcbuilder.view;
 import elte.project.pcbuilder.domain.components.PCComponent;
 import elte.project.pcbuilder.domain.user.Credential;
 import elte.project.pcbuilder.domain.user.Order;
-import elte.project.pcbuilder.domain.user.OrderItem;
 
 import java.util.List;
 import java.util.Scanner;
@@ -76,7 +75,7 @@ public class PCBuilderConsoleView implements PCBuilderView {
             System.out.println("You don't have any orders.");
         } else {
             for (int i = 0; i < orderList.size(); i++) {
-                List<OrderItem> orderItems = orderList.get(i).getOrderItems();
+                List<PCComponent> orderItems = orderList.get(i).getPcComponents();
                 System.out.println("Order - " + (i+1));
                 listOrderItems(orderItems);
             }
@@ -92,9 +91,9 @@ public class PCBuilderConsoleView implements PCBuilderView {
     }
 
     @Override
-    public void listOrderItems(List<OrderItem> cartItems) {
-        for (OrderItem currentOrderItem : cartItems) {
-            System.out.println("    " + currentOrderItem.toString());
+    public void listOrderItems(List<PCComponent> pcComponents) {
+        for(PCComponent component : pcComponents){
+            System.out.println(component.toString());
         }
     }
 
