@@ -1,6 +1,6 @@
 package elte.project.pcbuilder;
 
-import elte.project.pcbuilder.domain.components.PCComponent;
+import elte.project.pcbuilder.domain.components.*;
 import elte.project.pcbuilder.domain.user.Credential;
 import elte.project.pcbuilder.domain.user.Order;
 import elte.project.pcbuilder.domain.user.User;
@@ -56,35 +56,35 @@ public class PCBuilder implements CommandLineRunner {
                     PCComponent selectedComponent;
                     switch (selectedCategory){
                         case "1" -> {
-                            selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findAllGPU());
+                            selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findPCComponentByClass(GPU.class));
                             cartService.add(selectedComponent);
                         }
                         case "2" -> {
-                            selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findAllCPU());
+                            selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findPCComponentByClass(CPU.class));
                             cartService.add(selectedComponent);
                         }
                         case "3" -> {
-                            selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findAllCPUCooler());
+                            selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findPCComponentByClass(CPUCooler.class));
                             cartService.add(selectedComponent);
                         }
                         case "4" -> {
-                            selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findAllMotherboard());
+                            selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findPCComponentByClass(Motherboard.class));
                             cartService.add(selectedComponent);
                         }
                         case "5" -> {
-                            selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findAllPSU());
+                            selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findPCComponentByClass(PSU.class));
                             cartService.add(selectedComponent);
                         }
                         case "6" -> {
-                            selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findAllRAM());
+                            selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findPCComponentByClass(RAM.class));
                             cartService.add(selectedComponent);
                         }
                         case "7" -> {
-                            selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findAllStorage());
+                            selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findPCComponentByClass(Storage.class));
                             cartService.add(selectedComponent);
                         }
                         case "8" -> {
-                            selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findAllCase());
+                            selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findPCComponentByClass(PCCase.class));
                             cartService.add(selectedComponent);
                         }
                         default -> System.out.println("Wrong Input!");

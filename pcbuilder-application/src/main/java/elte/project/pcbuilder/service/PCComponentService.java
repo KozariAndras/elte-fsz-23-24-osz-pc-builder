@@ -14,52 +14,8 @@ public class PCComponentService {
     @Autowired
     PCComponentRepository pcComponentRepository;
 
-    public List<PCComponent> findAllById(int id){
-        return pcComponentRepository.findAllById(id);
-    }
-    public List<PCComponent> findAllByBrand(String brand){
-        return pcComponentRepository.findAllByBrand(brand);
-    }
-    public List<PCComponent> findAllByName(String name){
-        return pcComponentRepository.findAllByName(name);
-    }
-    List<PCComponent> findAllByPriceIsLessThanEqual(BigDecimal price){
-        return pcComponentRepository.findAllByPriceIsGreaterThanEqual(price);
-    }
-    List<PCComponent> findAllByPriceIsGreaterThanEqual(BigDecimal price){
-        return pcComponentRepository.findAllByPriceIsGreaterThanEqual(price);
-    }
-
-    public List<PCCase> findAllCase(){
-        return pcComponentRepository.findAllCase();
-    }
-
-    public List<CPU> findAllCPU(){
-        return pcComponentRepository.findAllCPU();
-    }
-
-    public List<CPUCooler> findAllCPUCooler(){
-        return pcComponentRepository.findAllCPUCooler();
-    }
-
-    public List<GPU> findAllGPU(){
-        return pcComponentRepository.findAllGPU();
-    }
-
-    public List<Motherboard> findAllMotherboard(){
-        return pcComponentRepository.findAllMotherboard();
-    }
-
-    public List<PSU> findAllPSU(){
-        return pcComponentRepository.findAllPSU();
-    }
-
-    public List<RAM> findAllRAM(){
-        return pcComponentRepository.findAllRAM();
-    }
-
-    public List<Storage> findAllStorage(){
-        return pcComponentRepository.findAllStorage();
+    public <T extends PCComponent> List<T> findPCComponentByClass(Class<T> type){
+        return pcComponentRepository.findPCComponent(type);
     }
 
 
