@@ -8,6 +8,7 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 @Entity
 public class Motherboard extends PCComponent {
@@ -22,6 +23,9 @@ public class Motherboard extends PCComponent {
 
     @Enumerated(EnumType.STRING)
     private CPUSocket cpuSocket;
+
+    public Motherboard() {
+    }
 
     public Motherboard(String name, String brand, BigDecimal price, String chipset, SizeType sizeType, RamSocketType ramSocketType, CPUSocket cpuSocket) {
         super(name, brand, price);
@@ -60,5 +64,18 @@ public class Motherboard extends PCComponent {
 
     public void setCpuSocket(CPUSocket cpuSocket) {
         this.cpuSocket = cpuSocket;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Motherboard that)) return false;
+        if (!super.equals(o)) return false;
+        return Objects.equals(chipset, that.chipset) && sizeType == that.sizeType && ramSocketType == that.ramSocketType && cpuSocket == that.cpuSocket;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), chipset, sizeType, ramSocketType, cpuSocket);
     }
 }

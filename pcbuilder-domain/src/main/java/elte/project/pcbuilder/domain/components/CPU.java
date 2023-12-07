@@ -5,8 +5,10 @@ import elte.project.pcbuilder.domain.enums.CPUType;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 @Entity
+@Table(name = "CPUs")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class CPU extends PCComponent {
 
@@ -20,6 +22,9 @@ public class CPU extends PCComponent {
 
     @Enumerated(EnumType.STRING)
     private CPUType cpuType;
+
+    public CPU() {
+    }
 
     public CPU(String name, String brand, BigDecimal price, int cores, int threads, int coreSpeed, int maxCoreSpeed, CPUSocket cpuSocket, CPUType cpuType) {
         super(name, brand, price);
@@ -77,5 +82,18 @@ public class CPU extends PCComponent {
 
     public void setCpuType(CPUType cpuType) {
         this.cpuType = cpuType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CPU cpu)) return false;
+        if (!super.equals(o)) return false;
+        return cores == cpu.cores && threads == cpu.threads && coreSpeed == cpu.coreSpeed && maxCoreSpeed == cpu.maxCoreSpeed && cpuSocket == cpu.cpuSocket && cpuType == cpu.cpuType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), cores, threads, coreSpeed, maxCoreSpeed, cpuSocket, cpuType);
     }
 }

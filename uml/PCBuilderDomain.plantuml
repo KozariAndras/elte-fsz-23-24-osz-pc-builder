@@ -29,18 +29,19 @@ Getters() and Setters()
 }
 
 
-Motherboard --o "1" SizeType
-Case --o "1..*" SizeType
-RAM --o "1" RamSocketType
-Motherboard  --o "1" RamSocketType 
-Storage  --o "1" StorageType
-CPUCooler --o "1" CoolerType
-AmdGPU --o "1" AmdGPUSeries
-NvidiaGPU --o "1" NvidiaGPUSeries
-AmdCPU --o "1" CPUSocket
-IntelCPU --o "1" CPUSocket
-Motherboard --o "1" CPUSocket
-CPUCooler --o "1..*" CPUSocket
+Motherboard --> "1" SizeType
+Case --> "1..*" SizeType
+RAM --> "1" RamSocketType
+Motherboard  --> "1" RamSocketType 
+Storage  --> "1" StorageType
+CPUCooler --> "1" CoolerType
+CPU --> "1" CPUSocket
+Motherboard --> "1" CPUSocket
+GPU --> "1" GPUType
+GPU --> "1" GPUSeries
+CPUCooler --> "1..*" CPUSocket
+CPU --> "1" CPUType
+
 
 User --* "1" Cart
 User "0..*" --o "1" Order
@@ -60,7 +61,7 @@ size : int
 Getters() and Setters()
 }
 
-abstract class CPU extends PCComponent {
+class CPU extends PCComponent {
 cores : int
 threads : int
 coreSpeed : int
@@ -68,25 +69,10 @@ maxCoreSpeed : int
 Getters() and Setters()
 }
 
-class AmdCPU extends CPU{
-Getters() and Setters()
-}
 
-class IntelCPU extends CPU{
-Getters() and Setters()
-}
-
-abstract class GPU extends PCComponent {
+class GPU extends PCComponent {
 clockSpeed : int
 memorySize : int
-Getters() and Setters()
-}
-
-class NvidiaGPU extends GPU {
-Getters() and Setters()
-}
-
-class AmdGPU extends GPU {
 Getters() and Setters()
 }
 
@@ -148,20 +134,30 @@ DDR5 : RamSocketType
 RamSocketType()
 }
 
-enum NvidiaGPUSeries {
-RTX40 : NvidiaGPUSeries 
-RTX30 : NvidiaGPUSeries 
-RTX20 : NvidiaGPUSeries 
-GTX10 : NvidiaGPUSeries 
-NvidiaGPUSeries()
+enum CPUType {
+AMD : CPUType
+INTEL : CPUType
+CPUType()
 }
 
-enum AmdGPUSeries {
-RX7000 : AmdGPUSeries
-RX6000 : AmdGPUSeries
-RX5000 : AmdGPUSeries
-AmdGPUSeries()
+enum GPUType {
+AMD : GPUType 
+INTEL : GPUType 
+NVIDIA : GPUType
+GPUType()
 }
+
+enum GPUSeries {
+RTX40 : GPUSeries 
+RTX30 : GPUSeries 
+RTX20 : GPUSeries 
+GTX10 : GPUSeries 
+RX7000 : GPUSeries 
+RX6000 : GPUSeries 
+RX5000 : GPUSeries 
+GPUSeries()
+}
+
 
 enum CPUSocket {
 AM3 : CPUSocket

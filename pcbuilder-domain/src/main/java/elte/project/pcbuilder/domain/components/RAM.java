@@ -7,6 +7,7 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 @Entity
 public class RAM extends PCComponent {
@@ -16,6 +17,9 @@ public class RAM extends PCComponent {
     private int size;
     @Enumerated(EnumType.STRING)
     private RamSocketType ramSocketType;
+
+    public RAM() {
+    }
 
     public RAM(String name, String brand, BigDecimal price, String timings, int speed, int size, RamSocketType ramSocketType) {
         super(name, brand, price);
@@ -55,5 +59,18 @@ public class RAM extends PCComponent {
 
     public void setRamSocketType(RamSocketType ramSocketType) {
         this.ramSocketType = ramSocketType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof RAM ram)) return false;
+        if (!super.equals(o)) return false;
+        return speed == ram.speed && size == ram.size && Objects.equals(timings, ram.timings) && ramSocketType == ram.ramSocketType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), timings, speed, size, ramSocketType);
     }
 }

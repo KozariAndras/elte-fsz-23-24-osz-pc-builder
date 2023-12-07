@@ -126,8 +126,8 @@ public class TestDataGenerator {
     private CPUCooler create(String brand, String name, BigDecimal price, int noise, int radius,int speed,CoolerType coolerType){
         return new CPUCooler(name,brand,price,noise,radius,speed,coolerType);
     }
-    private Case create(String brand,String name,BigDecimal price,SizeType sizeType){
-        return new Case(brand,name,price,sizeType);
+    private PCCase create(String brand, String name, BigDecimal price, SizeType sizeType){
+        return new PCCase(brand,name,price,sizeType);
     }
     private Motherboard create(String brand,String name,BigDecimal price,String chipset,SizeType size,RamSocketType ramSocket,CPUSocket cpuSocket){
         return new Motherboard(name,brand,price,chipset,size,ramSocket,cpuSocket);

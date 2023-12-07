@@ -1,7 +1,7 @@
 package elte.project.pcbuilder.domain.user;
 
 import elte.project.pcbuilder.domain.components.PCComponent;
-import elte.project.pcbuilder.domain.user.User;
+import elte.project.pcbuilder.domain.enums.OrderStatusType;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -15,8 +15,9 @@ public class Order {
     private int id;
     @ManyToOne
     private User user;
-    private String status;
-    @OneToMany
+    @Enumerated(EnumType.STRING)
+    private OrderStatusType status;
+    @ManyToMany
     private List<PCComponent> pcComponents;
 
     public int getId() {
@@ -35,11 +36,11 @@ public class Order {
         this.user = user;
     }
 
-    public String getStatus() {
+    public OrderStatusType getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(OrderStatusType status) {
         this.status = status;
     }
 

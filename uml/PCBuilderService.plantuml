@@ -1,6 +1,18 @@
 @startuml
+
+PCBuilder o-- AuthenticationService
+PCBuilder o-- CartService
+PCBuilder o-- OrderService
+PCBuilder o-- PCComponentService
+
+
+class PCBuilder {
+run() : void
+start() : void
+}
+
 class AuthenticationService{
-login(username : String,password : String) : User
+login(credential : Credential) : User
 register(user : User) : void
 }
 
@@ -11,16 +23,24 @@ calculateTotalPrice() : BigDecimal
 }
 
 class OrderService{
-create(cart : Cart) : void
+create(items : List<OrderItem>,user : User) : void
 remove(order : Order) : void
 complete(id : int) : void
+listOrdersByUser(user : User) : List<Order>
 }
 
 class PCComponentService{
 findAllComponents() : List<PCComponent>
 findAllGPU() : List<GPU>
 findAllCPU() : List<CPU>
-findAllCase() : List<Case>
+findAllCPUCooler() : List<Case>
+findAllMotherboard() : List<Case>
+findAllPSU() : List<Case>
+findAllRAM() : List<Case>
+findAllStorage() : List<Case>
+
 }
+
+
 
 @enduml
