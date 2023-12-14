@@ -18,6 +18,10 @@ public class PCComponentService {
         return pcComponentRepository.findPCComponent(type);
     }
 
+    public Iterable<PCComponent> findAll(){
+        return pcComponentRepository.findAll();
+    }
+
 
 
 }

@@ -30,7 +30,7 @@ public class PCBuilder implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         dataGenerator.createTestTable();
-        start();
+        // start();
     }
 
     public void start(){

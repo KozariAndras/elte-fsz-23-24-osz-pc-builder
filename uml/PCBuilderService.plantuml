@@ -1,3 +1,5 @@
+
+
 @startuml
 
 PCBuilder o-- AuthenticationService
@@ -31,13 +33,7 @@ listOrdersByUser(user : User) : List<Order>
 
 class PCComponentService{
 findAllComponents() : List<PCComponent>
-findAllGPU() : List<GPU>
-findAllCPU() : List<CPU>
-findAllCPUCooler() : List<Case>
-findAllMotherboard() : List<Case>
-findAllPSU() : List<Case>
-findAllRAM() : List<Case>
-findAllStorage() : List<Case>
+findPCComponentByClass(Class<Extends PCComponent> : type) : List<Extends PCComponent>
 
 }
 

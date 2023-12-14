@@ -18,7 +18,7 @@ public class PCCase extends PCComponent {
     public PCCase() {
     }
 
-    public PCCase(String name, String brand, BigDecimal price, SizeType sizeType) {
+    public PCCase(String brand,String name,BigDecimal price, SizeType sizeType) {
         super(name, brand, price);
         this.sizeType = sizeType;
     }

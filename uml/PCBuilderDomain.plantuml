@@ -16,7 +16,6 @@ Getters() and Setters()
 
 class Order {
 id : int
-status : String
 Getters() and Setters()
 }
 
@@ -32,7 +31,7 @@ Getters() and Setters()
 Motherboard --> "1" SizeType
 Case --> "1..*" SizeType
 RAM --> "1" RamSocketType
-Motherboard  --> "1" RamSocketType 
+Motherboard  --> "1" RamSocketType
 Storage  --> "1" StorageType
 CPUCooler --> "1" CoolerType
 CPU --> "1" CPUSocket
@@ -41,6 +40,7 @@ GPU --> "1" GPUType
 GPU --> "1" GPUSeries
 CPUCooler --> "1..*" CPUSocket
 CPU --> "1" CPUType
+Order --> OrderStatus
 
 
 User --* "1" Cart
@@ -141,23 +141,27 @@ CPUType()
 }
 
 enum GPUType {
-AMD : GPUType 
-INTEL : GPUType 
+AMD : GPUType
+INTEL : GPUType
 NVIDIA : GPUType
 GPUType()
 }
 
 enum GPUSeries {
-RTX40 : GPUSeries 
-RTX30 : GPUSeries 
-RTX20 : GPUSeries 
-GTX10 : GPUSeries 
-RX7000 : GPUSeries 
-RX6000 : GPUSeries 
-RX5000 : GPUSeries 
+RTX40 : GPUSeries
+RTX30 : GPUSeries
+RTX20 : GPUSeries
+GTX10 : GPUSeries
+RX7000 : GPUSeries
+RX6000 : GPUSeries
+RX5000 : GPUSeries
 GPUSeries()
 }
 
+enum OrderStatus{
+Complete : Status
+Incomplete : Status
+}
 
 enum CPUSocket {
 AM3 : CPUSocket
