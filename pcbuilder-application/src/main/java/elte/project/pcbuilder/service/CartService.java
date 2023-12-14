@@ -2,11 +2,13 @@ package elte.project.pcbuilder.service;
 
 import elte.project.pcbuilder.domain.components.PCComponent;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.annotation.SessionScope;
 
 import java.math.BigDecimal;
 import java.util.*;
 
 @Service
+@SessionScope
 public class CartService {
     private List<PCComponent> pcComponents = new ArrayList<>();
 
