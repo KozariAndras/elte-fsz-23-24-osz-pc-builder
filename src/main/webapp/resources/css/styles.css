@@ -1,3 +1,10 @@
+html {
+    font-family: 'Roboto', sans-serif
+}
+
+body {
+    margin: 0;
+}
 
 th, td {
   border-bottom: 1px solid #ddd;
@@ -8,11 +15,16 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background: rgb(0,0,0);
+  background: linear-gradient(180deg, rgba(0,0,0,0.4780112728685224) 44%, rgba(70,70,70,0) 100%);
 }
 
 li {
   float: left;
+}
+
+.floatright {
+    float:right
 }
 
 li a {
@@ -33,12 +45,10 @@ table {
 }
 
 
-/* Style for the dropdown menu items */
-    ul.navbar li:hover .dropdown-content {
+ul.navbar li:hover .dropdown-content {
       display: block;
     }
 
-    /* Style for the dropdown content (hidden by default) */
     .dropdown-content {
       display: none;
       position: absolute;
@@ -48,7 +58,6 @@ table {
       z-index: 1;
     }
 
-    /* Style for the dropdown content items */
     .dropdown-content a {
       color: black;
       padding: 12px 16px;
@@ -57,7 +66,14 @@ table {
       text-align: left;
     }
 
-    /* Style for the dropdown content items on hover */
     .dropdown-content a:hover {
       background-color: #ddd;
     }
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}

@@ -7,7 +7,6 @@
     <link href="<c:url value="/resources/css/styles.css"/>" rel="stylesheet">
 </head>
 <body>
-    <div>
-    </div>
+
 </body>
 </html>
