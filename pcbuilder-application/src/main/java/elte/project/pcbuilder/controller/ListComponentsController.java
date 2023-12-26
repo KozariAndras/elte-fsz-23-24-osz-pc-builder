@@ -1,9 +1,7 @@
 package elte.project.pcbuilder.controller;
 
-import elte.project.pcbuilder.domain.components.CPU;
 import elte.project.pcbuilder.domain.components.PCComponent;
 import elte.project.pcbuilder.service.PCComponentService;
-import elte.project.pcbuilder.transformer.CategoryTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,8 +15,6 @@ import java.util.List;
 public class ListComponentsController {
     @Autowired
     private PCComponentService pcComponentService;
-    @Autowired
-    private CategoryTransformer categoryTransformer;
 
     @GetMapping("/")
     public String listComponents(Model model){
@@ -31,8 +27,9 @@ public class ListComponentsController {
     }
 
     @GetMapping("/{category}")
-    public String listComponentsBasedOnCategory(Model model,@PathVariable("category") String category){
-        List<? extends PCComponent> components = pcComponentService.findPCComponentByClass(categoryTransformer.transform(category));
+    public String listComponentsBasedOnCategory(Model model,@PathVariable("category") Class<? extends PCComponent> category){
+        List<? extends PCComponent> components = pcComponentService.findPCComponentByClass(category);
+
         model.addAttribute("components",components);
         return "components";
 

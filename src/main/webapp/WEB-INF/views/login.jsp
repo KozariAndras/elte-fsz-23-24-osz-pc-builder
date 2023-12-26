@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>PCBuilder - Login</title>
-    <link href="<c:url value="/resources/css/styles.css"/>" rel="stylesheet">
+    <link href="<c:url value="css/styles.css" />" rel="stylesheet" >
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
 
