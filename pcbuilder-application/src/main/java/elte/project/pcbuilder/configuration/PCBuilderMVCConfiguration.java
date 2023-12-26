@@ -17,7 +17,8 @@ public class PCBuilderMVCConfiguration extends WebMvcConfigurationSupport {
     @Override
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("css/**","js/**")
-                .addResourceLocations("classpath:/static/css/", "classpath:/static/js/");
+                .addResourceLocations("classpath:/static/css/", "classpath:/static/js/")
+                .setCachePeriod(0);
     }
 
     @Bean

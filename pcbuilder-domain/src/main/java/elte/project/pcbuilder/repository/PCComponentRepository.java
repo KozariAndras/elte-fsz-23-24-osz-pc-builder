@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public interface PCComponentRepository extends CrudRepository<PCComponent,Integer> {
@@ -14,5 +13,6 @@ public interface PCComponentRepository extends CrudRepository<PCComponent,Intege
         @Query("from PCComponent part where type(part) = :type")
         <T extends PCComponent> List<T> findPCComponent(@Param("type") Class<T> type);
 
+        List<PCComponent> findByNameContainingIgnoreCase(String search);
 
 }

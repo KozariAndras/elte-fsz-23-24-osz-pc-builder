@@ -11,7 +11,7 @@
 <nav>
     <ul class="navbar">
         <li><a href="/">Home</a></li>
-        <li class="dropdown">
+        <li class="searchbar-form">
             <a class="dropbtn">Categories</a>
             <div class="dropdown-content">
               <a href="/CPU">Cpu</a>

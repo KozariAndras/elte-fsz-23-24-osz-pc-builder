@@ -28,7 +28,10 @@ li {
     float: right;
 }
 
-li a {
+
+
+
+li a{
     background-color: whitesmoke;
     box-sizing: border-box;
     min-width: 10rem;
@@ -38,6 +41,17 @@ li a {
     padding: 14px 16px;
     text-decoration: none;
     transition: all 0.3s ease;
+}
+
+.searchbar {
+    margin: 0;
+    background-color: whitesmoke;
+    box-sizing: border-box;
+    min-width: 10rem;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
 }
 
 li a:hover {

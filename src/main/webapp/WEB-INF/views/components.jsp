@@ -9,7 +9,7 @@
 </head>
 <nav>
     <ul class="navbar">
-        <li><a href="/">Home</a></li>
+        <li class=""><a href="/">Home</a></li>
         <li class="dropdown">
             <a class="dropbtn">Categories</a>
             <div class="dropdown-content">
@@ -23,29 +23,43 @@
               <a href="/Storage">Storage</a>
             </div>
           </li>
+          <li class="">
+            <form action="/search" method="get" class="searchbar">
+               <input path="search" name="search" value="">
+               <input type="submit" value="Search">
+            </form>
+          </li>
+
           <li class="floatright"><a href="/login">Login</a></li>
           <li class="floatright"><a href="/cart">Cart</a></li>
     </ul>
 </nav>
 <body>
-    <div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                    <c:forEach items="${components}" var="component">
-                         <tr>
-                                <td>${component.name}</td>
-                                <td>${component.price.intValue()}</td>
-                         </tr>
-                    </c:forEach>
-            </tbody>
-        </table>
-    </div>
+<c:choose>
+    <c:when test = "${components.isEmpty()}">
+        <div><a>Nothing was found</a></div>
+    </c:when>
+    <c:otherwise>
+        <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <c:forEach items="${components}" var="component">
+                                 <tr>
+                                        <td>${component.name}</td>
+                                        <td>${component.price.intValue()}</td>
+                                 </tr>
+                            </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+    </c:otherwise>
+</c:choose>
 </body>
 <script src="<c:url value="js/index.js"/>"></script>
 </html>
