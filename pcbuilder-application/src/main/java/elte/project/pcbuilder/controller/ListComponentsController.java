@@ -1,14 +1,12 @@
 package elte.project.pcbuilder.controller;
 
 import elte.project.pcbuilder.domain.components.PCComponent;
+import elte.project.pcbuilder.domain.user.Cart;
 import elte.project.pcbuilder.service.PCComponentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,16 +20,13 @@ public class ListComponentsController {
     public String listComponents(Model model){
         List<PCComponent> allComponents = new ArrayList<>();
         pcComponentService.findAll().forEach(allComponents::add);
-
         model.addAttribute("components",allComponents);
-
         return "components";
     }
 
     @GetMapping("/{category}")
     public String listComponentsBasedOnCategory(Model model,@PathVariable("category") Class<? extends PCComponent> category){
         List<? extends PCComponent> components = pcComponentService.findPCComponentByClass(category);
-
         model.addAttribute("components",components);
         return "components";
 

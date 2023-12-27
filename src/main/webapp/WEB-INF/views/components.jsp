@@ -53,6 +53,12 @@
                                  <tr>
                                         <td>${component.name}</td>
                                         <td>${component.price.intValue()}</td>
+                                        <td>
+                                            <form action="<c:url value='/addToCart'/>" method="post">
+                                                  <input type="hidden" name="componentId" value="${component.id}">
+                                                  <button type="submit">Add to Cart</button>
+                                             </form>
+                                        </td>
                                  </tr>
                             </c:forEach>
                     </tbody>

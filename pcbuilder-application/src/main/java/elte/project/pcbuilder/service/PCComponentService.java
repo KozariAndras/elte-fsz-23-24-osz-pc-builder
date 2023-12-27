@@ -24,6 +24,10 @@ public class PCComponentService {
         return pcComponentRepository.findByNameContainingIgnoreCase(name);
     }
 
+    public PCComponent findById(int id){
+        return pcComponentRepository.findById(id).orElseGet(GPU::new);
+    }
+
 
 
 }

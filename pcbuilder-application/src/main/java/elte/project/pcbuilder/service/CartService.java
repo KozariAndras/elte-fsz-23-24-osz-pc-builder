@@ -8,27 +8,12 @@ import java.math.BigDecimal;
 import java.util.*;
 
 @Service
-@SessionScope
 public class CartService {
-    private List<PCComponent> pcComponents = new ArrayList<>();
-
-    public void add(PCComponent component){
-        pcComponents.add(component);
-    }
-
-    public BigDecimal calculateTotalPrice(){
+    public BigDecimal calculateTotalPrice(List<PCComponent> pcComponents){
         BigDecimal sum=BigDecimal.ZERO;
         for(PCComponent item : pcComponents){
             sum = sum.add(item.getPrice());
         }
         return sum;
-    }
-
-    public List<PCComponent> getPcComponents() {
-        return pcComponents;
-    }
-
-    public void setPcComponents(List<PCComponent> pcComponents) {
-        this.pcComponents = pcComponents;
     }
 }

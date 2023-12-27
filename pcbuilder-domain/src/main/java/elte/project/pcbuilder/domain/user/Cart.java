@@ -2,20 +2,14 @@ package elte.project.pcbuilder.domain.user;
 
 import elte.project.pcbuilder.domain.components.PCComponent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cart {
-
-    private int id;
     private List<PCComponent> pcComponents;
 
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public Cart() {
+        this.pcComponents = new ArrayList<>();
     }
 
     public List<PCComponent> getPcComponents() {

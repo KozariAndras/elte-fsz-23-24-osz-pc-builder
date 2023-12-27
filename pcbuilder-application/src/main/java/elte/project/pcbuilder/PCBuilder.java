@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -35,6 +36,7 @@ public class PCBuilder implements CommandLineRunner {
 
     public void start(){
         User loggedInUser = new User();
+        List<PCComponent> cart = new ArrayList<>();
         while(loggedInUser.getId() == 0){
             Credential credential = consoleView.getCredentials();
             loggedInUser = authenticationService.authenticateUser(credential);
@@ -57,53 +59,53 @@ public class PCBuilder implements CommandLineRunner {
                     switch (selectedCategory){
                         case "1" -> {
                             selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findPCComponentByClass(GPU.class));
-                            cartService.add(selectedComponent);
+                            cart.add(selectedComponent);
                         }
                         case "2" -> {
                             selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findPCComponentByClass(CPU.class));
-                            cartService.add(selectedComponent);
+                            cart.add(selectedComponent);
                         }
                         case "3" -> {
                             selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findPCComponentByClass(CPUCooler.class));
-                            cartService.add(selectedComponent);
+                            cart.add(selectedComponent);
                         }
                         case "4" -> {
                             selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findPCComponentByClass(Motherboard.class));
-                            cartService.add(selectedComponent);
+                            cart.add(selectedComponent);
                         }
                         case "5" -> {
                             selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findPCComponentByClass(PSU.class));
-                            cartService.add(selectedComponent);
+                            cart.add(selectedComponent);
                         }
                         case "6" -> {
                             selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findPCComponentByClass(RAM.class));
-                            cartService.add(selectedComponent);
+                            cart.add(selectedComponent);
                         }
                         case "7" -> {
                             selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findPCComponentByClass(Storage.class));
-                            cartService.add(selectedComponent);
+                            cart.add(selectedComponent);
                         }
                         case "8" -> {
                             selectedComponent = consoleView.printSelectedComponentCategory(pcComponentService.findPCComponentByClass(PCCase.class));
-                            cartService.add(selectedComponent);
+                            cart.add(selectedComponent);
                         }
                         default -> System.out.println("Wrong Input!");
                     }
                 }
                 case "3" -> {
-                    if(cartService.calculateTotalPrice().intValueExact() != 0){
+                    if(cartService.calculateTotalPrice(cart).intValueExact() != 0){
                         System.out.println("Order:");
-                        System.out.println("Your order costs:" + cartService.calculateTotalPrice().intValueExact() + "ft.");
-                        orderService.create(cartService.getPcComponents(),loggedInUser);
+                        System.out.println("Your order costs:" + cartService.calculateTotalPrice(cart).intValueExact() + "ft.");
+                        orderService.create(cart,loggedInUser);
                     }else {
                         System.out.println("Your cart is empty.");
                     }
 
                 }
                 case "4" -> {
-                    if(!cartService.getPcComponents().isEmpty()){
+                    if(!cart.isEmpty()){
                         System.out.println("Cart:");
-                        consoleView.listOrderItems(cartService.getPcComponents());
+                        consoleView.listOrderItems(cart);
                     } else {
                         System.out.println("Your cart is empty.");
                     }
