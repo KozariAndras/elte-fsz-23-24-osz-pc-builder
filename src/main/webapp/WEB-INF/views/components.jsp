@@ -54,9 +54,9 @@
                                         <td>${component.name}</td>
                                         <td>${component.price.intValue()}</td>
                                         <td>
-                                            <form action="<c:url value='/addToCart'/>" method="post">
+                                            <form action="<c:url value='/addToCart'/>" method="post" class="smallMargin">
                                                   <input type="hidden" name="componentId" value="${component.id}">
-                                                  <button type="submit">Add to Cart</button>
+                                                  <button class="greenButton" type="submit">Add to Cart</button>
                                              </form>
                                         </td>
                                  </tr>
