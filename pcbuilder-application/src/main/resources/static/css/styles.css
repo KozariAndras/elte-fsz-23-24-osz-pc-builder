@@ -6,6 +6,10 @@ body {
     margin: 0;
 }
 
+nav {
+    margin-bottom: 3rem;
+}
+
 tr {
     border-bottom: 1px solid #ddd;
 }
@@ -33,7 +37,6 @@ li {
 
 
 
-
 li a{
     background-color: whitesmoke;
     box-sizing: border-box;
@@ -41,7 +44,7 @@ li a{
     display: block;
     color: black;
     text-align: center;
-    padding: 14px 16px;
+    padding: 17px 16px;
     text-decoration: none;
     transition: all 0.3s ease;
 }

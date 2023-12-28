@@ -51,7 +51,9 @@
                     <tbody>
                             <c:forEach items="${components}" var="component">
                                  <tr>
-                                        <td>${component.name}</td>
+                                        <td>
+                                         <a href="<c:url value='/details${component.id}'/>">${component.name}</a>
+                                        </td>
                                         <td>${component.price.intValue()}</td>
                                         <td>
                                             <form action="<c:url value='/addToCart'/>" method="post" class="smallMargin">
