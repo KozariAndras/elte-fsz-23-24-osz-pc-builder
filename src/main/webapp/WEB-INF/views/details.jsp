@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>PCBuilder - Cart</title>
+    <title>PCBuilder - Details</title>
     <link href="<c:url value="css/styles.css" />" rel="stylesheet" >
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
@@ -28,62 +28,158 @@
           <li class="floatright"><a href="/cart">Cart</a></li>
     </ul>
 </nav>
-  ${component.name}
-  ${component.brand}
-  ${component.price.intValue()}
+<h1 class="detailsh1">${type}</h1>
+<table class="detailstable">
+  <tr>
+    <td>Brand:</td>
+    <td>${component.brand}</td>
+  </tr>
+  <tr>
+    <td>Full name:</td>
+    <td>${component.name}</td>
+  </tr>
+  <tr>
+    <td>Price:</td>
+    <td>${component.price.intValue()}ft</td>
+  </tr>
   <c:choose>
       <c:when test = "${type.equals('GPU')}">
-        ${component.clockSpeed}
-        ${component.memorySize}
-        ${component.gpuType}
-        ${component.gpuSeries}
+        <tr>
+          <td>Type:</td>
+          <td>${component.gpuType}</td>
+        </tr>
+        <tr>
+          <td>Series:</td>
+          <td>${component.gpuSeries}</td>
+        </tr>
+        <tr>
+          <td>Memory size:</td>
+          <td>${component.memorySize} GB</td>
+        </tr>
+        <tr>
+          <td>Clock speed:</td>
+          <td>${component.clockSpeed} MHz</td>
+        </tr>
       </c:when>
 
       <c:when test = "${type.equals('CPU')}">
-        ${component.cores}
-        ${component.threads}
-        ${component.coreSpeed}
-        ${component.maxCoreSpeed}
+        <tr>
+          <td>Core count:</td>
+          <td>${component.cores}</td>
+        </tr>
+        <tr>
+          <td>Thread count:</td>
+          <td>${component.threads}</td>
+        </tr>
+        <tr>
+          <td>Core speed:</td>
+          <td>${component.coreSpeed} GHz</td>
+        </tr>
+        <tr>
+          <td>Max core speed:</td>
+          <td>${component.maxCoreSpeed} GHz</td>
+        </tr>
       </c:when>
 
       <c:when test = "${type.equals('CPUCooler')}">
-        ${component.noise}
-        ${component.radius}
-        ${component.speed}
+        <tr>
+          <td>Noise:</td>
+          <td>${component.noise} db</td>
+        </tr>
+        <tr>
+          <td>Radius:</td>
+          <td>${component.radius} mm</td>
+        </tr>
+        <tr>
+          <td>Speed:</td>
+          <td>${component.speed} rpm</td>
+        </tr>
       </c:when>
 
       <c:when test = "${type.equals('Motherboard')}">
-        ${component.chipset}
-        ${component.sizeType}
-        ${component.ramSocketType}
-        ${component.cpuSocket}
+        <tr>
+          <td>Chipset:</td>
+          <td>${component.chipset}</td>
+        </tr>
+        <tr>
+          <td>Size:</td>
+          <td>${component.sizeType}</td>
+        </tr>
+        <tr>
+          <td>Ram socket type:</td>
+          <td>${component.ramSocketType}</td>
+        </tr>
+        <tr>
+          <td>CPU socket type:</td>
+          <td>${component.cpuSocket}</td>
+        </tr>
       </c:when>
 
       <c:when test = "${type.equals('PCCase')}">
-        ${component.sizeType}
+        <tr>
+          <td>Size type:</td>
+          <td>${component.sizeType}</td>
+        </tr>
       </c:when>
 
       <c:when test = "${type.equals('PSU')}">
-        ${component.rating}
-        ${component.performance}
+        <tr>
+          <td>Rating:</td>
+          <td>${component.rating}</td>
+        </tr>
+        <tr>
+          <td>Performance:</td>
+          <td>${component.performance} W</td>
+        </tr>
       </c:when>
 
       <c:when test = "${type.equals('RAM')}">
-        ${component.timings}
-        ${component.speed}
-        ${component.size}
+        <tr>
+          <td>Size:</td>
+          <td>${component.size} GB</td>
+        </tr>
+        <tr>
+          <td>Speed:</td>
+          <td>${component.speed} MHz</td>
+        </tr>
+        <tr>
+          <td>Timings:</td>
+          <td>${component.timings}</td>
+        </tr>
       </c:when>
 
       <c:when test = "${type.equals('Storage')}">
-        ${component.size}
-        ${component.writingSpeed}
-        ${component.readingSpeed}
-        ${component.storageType}
+        <tr>
+          <td>Size:</td>
+          <td>${component.size} GB</td>
+        </tr>
+        <tr>
+          <td>Storage type:</td>
+          <td>${component.storageType}</td>
+        </tr>
+        <tr>
+          <td>Writing speed:</td>
+          <td>${component.writingSpeed} MB/s</td>
+        </tr>
+        <tr>
+          <td>Reading speed:</td>
+          <td>${component.readingSpeed} MB/s</td>
+        </tr>
       </c:when>
 
       <c:otherwise>
           No comment sir...
       </c:otherwise>
   </c:choose>
+  <tr>
+    <td>
+      <form action="<c:url value='/addToCart'/>" method="post" class="smallMargin">
+            <input type="hidden" name="componentId" value="${component.id}">
+            <button class="greenButton" type="submit">Add to Cart</button>
+       </form>
+    </td>
+  </tr>
+</table>
+
 </body>
 </html>

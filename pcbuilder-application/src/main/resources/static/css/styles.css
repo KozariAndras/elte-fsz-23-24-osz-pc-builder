@@ -36,7 +36,6 @@ li {
 }
 
 
-
 li a{
     background-color: whitesmoke;
     box-sizing: border-box;
@@ -91,6 +90,8 @@ ul.navbar li:hover .dropdown-content {
     margin: 0.5rem;
 }
 
+/* Buy button */
+
 .greenButton {
   background-color: white;
   border: 2px solid #04AA6D;
@@ -109,3 +110,18 @@ ul.navbar li:hover .dropdown-content {
   background-color: #04AA6D;
   color: white;
 }
+
+/* ---------- */
+
+/* Details table */
+
+.detailstable tr td:first-child {
+    text-align: right;
+    border-right: 1px solid #ddd;
+}
+
+.detailsh1 {
+    text-align: center;
+}
+
+/* ---------- */
