@@ -1,6 +1,7 @@
 package elte.project.pcbuilder.service;
 
 import elte.project.pcbuilder.domain.components.*;
+import elte.project.pcbuilder.exception.InvalidPathException;
 import elte.project.pcbuilder.repository.PCComponentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,7 @@ public class PCComponentService {
     }
 
     public PCComponent findById(int id){
-        return pcComponentRepository.findById(id).orElseGet(GPU::new);
+        return pcComponentRepository.findById(id).orElseThrow(() -> new InvalidPathException("The item was not found"));
     }
 
 

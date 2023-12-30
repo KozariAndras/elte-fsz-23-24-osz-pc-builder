@@ -28,7 +28,7 @@
           <li class="floatright"><a href="/cart">Cart</a></li>
     </ul>
 </nav>
-<h1 class="detailsh1">${type}</h1>
+<h1 class="textcenter">${type}</h1>
 <table class="detailstable">
   <tr>
     <td>Brand:</td>
