@@ -37,7 +37,7 @@
 <body>
 <c:choose>
     <c:when test = "${components.isEmpty()}">
-        <div><a>Nothing was found</a></div>
+        <div class="textcenter"><a>Nothing was found</a></div>
     </c:when>
     <c:otherwise>
         <div>
@@ -58,7 +58,7 @@
                                         <td>
                                             <form action="<c:url value='/addToCart'/>" method="post" class="smallMargin">
                                                   <input type="hidden" name="componentId" value="${component.id}">
-                                                  <button class="greenButton" type="submit">Add to Cart</button>
+                                                  <button class="button greenButtonHover" type="submit">Add to Cart</button>
                                              </form>
                                         </td>
                                  </tr>

@@ -30,7 +30,7 @@
 </nav>
 <c:choose>
     <c:when test = "${Data.getItems().isEmpty()}">
-        <div><a>Nothing was found</a></div>
+        <div class="textcenter"><a>Your cart is currently empty!</a></div>
     </c:when>
     <c:otherwise>
         <div>
@@ -55,31 +55,31 @@
                         <td>
                             <form action="<c:url value='/removeFromCart'/>" method="post" class="smallMargin">
                                 <input type="hidden" name="componentId" value="${Item.id}">
-                                <button class="greenButton" type="submit">-</button>
+                                <button class="button redButtonHover" type="submit">-</button>
                             </form>
                         </td>
-                        <td>${Item.quantity}</td>
+                        <td class="textcenter">${Item.quantity}</td>
                         <td>
                             <form action="<c:url value='/addToCart'/>" method="post" class="smallMargin">
                                 <input type="hidden" name="componentId" value="${Item.id}">
-                                <button class="greenButton" type="submit">+</button>
+                                <button class="button greenButtonHover" type="submit">+</button>
                             </form>
                         </td>
                         <td>
                             <form action="<c:url value='/removeAllFromCart'/>" method="post" class="smallMargin">
                                 <input type="hidden" name="componentId" value="${Item.id}">
-                                <button class="greenButton" type="submit">Remove from cart</button>
+                                <button class="button blackButtonHover" type="submit">Remove from cart</button>
                             </form>
                         </td>
                     </tr>
                 </c:forEach>
                     <tr>
-                        <td>
+                        <td class>
                             <p>Total price: ${Data.getTotalPrice().intValue()}ft</p>
                         </td>
                         <td>
                             <form action="<c:url value='/checkout'/>" method="post" class="smallMargin">
-                                <button class="greenButton" type="submit">Checkout</button>
+                                <button class= "button greenButtonHover" type="submit">Checkout</button>
                             </form>
                         </td>
                     </tr>
