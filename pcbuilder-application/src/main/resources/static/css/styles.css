@@ -124,4 +124,12 @@ ul.navbar li:hover .dropdown-content {
     text-align: center;
 }
 
+
+.login-container {
+  text-align: center;
+}
+
+.register-container{
+text-align: center;
+}
 /* ---------- */
