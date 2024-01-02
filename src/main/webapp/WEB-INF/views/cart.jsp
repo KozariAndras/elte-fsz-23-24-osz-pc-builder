@@ -28,5 +28,66 @@
           <li class="floatright"><a href="/cart">Cart</a></li>
     </ul>
 </nav>
+<c:choose>
+    <c:when test = "${Data.getItems().isEmpty()}">
+        <div class="textcenter"><a>Your cart is currently empty!</a></div>
+    </c:when>
+    <c:otherwise>
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th></th>
+                    <th>Quantity</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${Data.getItems()}" var="Item">
+                    <tr>
+                        <td>
+                            <a href="<c:url value='/details${Item.id}'/>">${Item.name}</a>
+                        </td>
+                        <td>${Item.price.intValue()}ft</td>
+                        <td>
+                            <form action="<c:url value='/removeFromCart'/>" method="post" class="smallMargin">
+                                <input type="hidden" name="componentId" value="${Item.id}">
+                                <button class="button redButtonHover" type="submit">-</button>
+                            </form>
+                        </td>
+                        <td class="textcenter">${Item.quantity}</td>
+                        <td>
+                            <form action="<c:url value='/addToCart'/>" method="post" class="smallMargin">
+                                <input type="hidden" name="componentId" value="${Item.id}">
+                                <button class="button greenButtonHover" type="submit">+</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="<c:url value='/removeAllFromCart'/>" method="post" class="smallMargin">
+                                <input type="hidden" name="componentId" value="${Item.id}">
+                                <button class="button blackButtonHover" type="submit">Remove from cart</button>
+                            </form>
+                        </td>
+                    </tr>
+                </c:forEach>
+                    <tr>
+                        <td class>
+                            <p>Total price: ${Data.getTotalPrice().intValue()}ft</p>
+                        </td>
+                        <td>
+                            <form action="<c:url value='/checkout'/>" method="post" class="smallMargin">
+                                <button class= "button greenButtonHover" type="submit">Checkout</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </c:otherwise>
+</c:choose>
+
 </body>
 </html>
