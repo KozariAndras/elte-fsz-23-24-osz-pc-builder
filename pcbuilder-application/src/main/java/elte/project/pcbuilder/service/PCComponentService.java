@@ -7,8 +7,10 @@ import elte.project.pcbuilder.repository.PCComponentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PCComponentService {
@@ -37,13 +39,30 @@ public class PCComponentService {
 
 
     public List<PCComponent> findWithFilter(FilterDTO filter) {
-        List<PCComponent> pcComponents = new ArrayList<>();
-        pcComponentRepository.findAll().forEach(pcComponent -> {
-            if(filter.getBrands().contains(pcComponent.getBrand())){
-                pcComponents.add(pcComponent);
-            }
-        });
-
+        List<PCComponent> pcComponents = pcComponentRepository.findAll();
+        if(!filter.getBrands().isEmpty()){
+            pcComponents = filterForBrands(filter, pcComponents);
+        } else if(isMinAndMaxNotNull(filter)){
+            pcComponents = filterForPrice(filter, pcComponents);
+        }
         return pcComponents;
+    }
+
+    private List<PCComponent> filterForPrice(FilterDTO filter, List<PCComponent> pcComponents) {
+        BigDecimal min = filter.getMin();
+        BigDecimal max = filter.getMax();
+
+        return pcComponents.stream().filter(pcComponent ->
+                pcComponent.getPrice().compareTo(min) >= 0 && pcComponent.getPrice().compareTo(max) <= 0).collect(Collectors.toList());
+    }
+
+    private List<PCComponent> filterForBrands(FilterDTO filter, List<PCComponent> pcComponents) {
+        return pcComponents.stream().filter(pcComponent ->
+                        filter.getBrands().contains(pcComponent.getBrand()))
+                .collect(Collectors.toList());
+    }
+
+    private boolean isMinAndMaxNotNull(FilterDTO filter) {
+        return filter.getMax() != null && filter.getMin() != null;
     }
 }

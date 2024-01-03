@@ -17,4 +17,6 @@ public interface PCComponentRepository extends CrudRepository<PCComponent,Intege
         @Query("select distinct brand from PCComponent")
         List<String> findDistinctBrands();
 
+        List<PCComponent> findAll();
+
 }
