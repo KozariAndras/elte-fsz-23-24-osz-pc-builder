@@ -37,6 +37,17 @@
     </ul>
 </nav>
 <body>
+
+<div class="side">
+    <form:form method="post" action="/searchFilter" modelAttribute="filter">
+            <form:label path="brands" class="boldFont">Brands: <br> </form:label>
+            <form:checkboxes items="${brands}" path="brands" delimiter="<br>"/> <br>
+            <form:button class="button blackButtonHover">Filter</form:button>
+    </form:form>
+</div>
+
+
+<div class="main">
 <c:choose>
     <c:when test = "${components.isEmpty()}">
         <div class="textcenter"><a>Nothing was found</a></div>
@@ -70,15 +81,10 @@
             </div>
     </c:otherwise>
 </c:choose>
-
-<div>
-    <form:form method="post" action="/searchFilter" modelAttribute="filter">
-            <form:label path="brands">Brands: <br> </form:label>
-            <form:checkboxes items="${brands}" path="brands" delimiter="<br>"/> <br>
-            <form:button>Filter</form:button>
-    </form:form>
 </div>
 
+<div class="side">
+</div>
 </body>
 <script src="<c:url value="js/index.js"/>"></script>
 </html>
