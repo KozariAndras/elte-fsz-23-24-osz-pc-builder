@@ -42,6 +42,13 @@
     <form:form method="post" action="/searchFilter" modelAttribute="filter">
             <form:label path="brands" class="boldFont">Brands: <br> </form:label>
             <form:checkboxes items="${brands}" path="brands" delimiter="<br>"/> <br>
+            <div>
+                <form:label path="min" class="boldFont">Min <br> </form:label>
+                <form:input path="min" type="number" min="0" placeholder="1"/> <br>
+                <form:label path="max" class="boldFont">Max <br> </form:label>
+                <form:input path="max" type="number" min="0" placeholder="1000000"/> <br>
+            </div>
+
             <form:button class="button blackButtonHover">Filter</form:button>
     </form:form>
 </div>
@@ -85,6 +92,7 @@
 
 <div class="side">
 </div>
+
 </body>
 <script src="<c:url value="js/index.js"/>"></script>
 </html>

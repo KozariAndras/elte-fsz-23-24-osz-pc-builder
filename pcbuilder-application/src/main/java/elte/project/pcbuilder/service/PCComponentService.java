@@ -43,6 +43,7 @@ public class PCComponentService {
                 pcComponents.add(pcComponent);
             }
         });
+
         return pcComponents;
     }
 }
