@@ -7,34 +7,11 @@
     <link href="<c:url value="css/styles.css" />" rel="stylesheet" >
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
-<nav>
-    <ul class="navbar">
-        <li class=""><a href="/">Home</a></li>
-        <li class="dropdown">
-            <a class="dropbtn">Categories</a>
-            <div class="dropdown-content">
-              <a href="/CPU">Cpu</a>
-              <a href="/GPU">Gpu</a>
-              <a href="/CPUCooler">CPU Cooler</a>
-              <a href="/Motherboard">Motherboard</a>
-              <a href="/PCCase">Case</a>
-              <a href="/PSU">Psu</a>
-              <a href="/RAM">Ram</a>
-              <a href="/Storage">Storage</a>
-            </div>
-          </li>
-          <li class="">
-            <form action="/search" method="get" class="searchbar">
-               <input path="search" name="search" value="">
-               <input type="submit" value="Search">
-            </form>
-          </li>
-
-          <li class="floatright"><a href="/login">Login</a></li>
-          <li class="floatright"><a href="/cart">Cart</a></li>
-    </ul>
-</nav>
 <body>
+<header>
+    <jsp:include page="fragments/NavbarWithSearchFragment.jsp"></jsp:include>
+</header>
+<main>
 <c:choose>
     <c:when test = "${components.isEmpty()}">
         <div class="textcenter"><a>Nothing was found</a></div>
@@ -68,6 +45,10 @@
             </div>
     </c:otherwise>
 </c:choose>
+</main>
+<footer>
+
+</footer>
 </body>
 <script src="<c:url value="js/index.js"/>"></script>
 </html>
