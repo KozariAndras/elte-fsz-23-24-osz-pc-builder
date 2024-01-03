@@ -14,14 +14,17 @@ public class LoginController {
     @Autowired
     private AuthenticationService authenticationService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @GetMapping("/login")
     public String login(){
         return "login";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login (Credential credential, Model model)
+    @PostMapping(value = "/login")
+    public String processLogin (@RequestParam String username, @RequestParam String password, Model model)
     {
+        Credential credential = new Credential();
+        credential.setUsername(username);
+        credential.setPassword(password);
         User loggedInUser = authenticationService.authenticateUser(credential);
 
         if(loggedInUser.getId() != 0)
@@ -33,7 +36,7 @@ public class LoginController {
         }else {
             //authentication failed.
             model.addAttribute("error", "Invalid username or password");
-            return  "error";
+            return  "login";
         }
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue()
     private int id;
     @OneToOne(mappedBy = "user")
     private Credential credential;

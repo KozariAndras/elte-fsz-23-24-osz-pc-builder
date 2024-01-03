@@ -17,14 +17,16 @@ public class AuthenticationService {
     public User authenticateUser(Credential credential){
         Optional<User> loggedInUser = userRepository.findUserByCredentialUsername(credential.getUsername());
         if(loggedInUser.isPresent() && loggedInUser.get().getCredential().getPassword().equals(credential.getPassword())){
-            return loggedInUser.get();
+            return loggedInUser.get(); //ez a user
         } else {
             return new User();
         }
     }
 
     public void register(User user){
+
         userRepository.save(user);
+        System.out.println("user has been saved.");
     }
 
 }

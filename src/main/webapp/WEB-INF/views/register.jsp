@@ -11,12 +11,12 @@
 
 <div class="register-container">
 <h2>Registration Page</h2>
-<form action="<c:url value='/login'/>" method="post">
+<form action="<c:url value='/register'/>" method="post">
     <label for="username">Username:</label>
-    <input type="text" id="username" name="credential.username" required>
+    <input type="text" id="username" name="username" required>
     <br>
     <label for="password">Password:</label>
-    <input type="password" id="password" name="credential.password" required>
+    <input type="password" id="password" name="password" required>
     <br>
     <!-- Add other fields related to user registration -->
     <br>

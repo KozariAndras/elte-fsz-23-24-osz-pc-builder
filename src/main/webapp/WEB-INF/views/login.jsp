@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!DOCTYPE  html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -10,7 +12,7 @@
 <body>
     <div class="login-container">
             <h2>Login Page</h2>
-            <form id="loginForm" action="<c:url value='/'/>" method="post">
+            <form id="loginForm" action="<c:url value='/login'/>" method="post">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" placeholder="username" required><br>
 
