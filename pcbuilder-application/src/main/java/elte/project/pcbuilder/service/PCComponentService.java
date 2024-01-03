@@ -29,6 +29,10 @@ public class PCComponentService {
         return pcComponentRepository.findById(id).orElseThrow(() -> new InvalidPathException("The item was not found"));
     }
 
+    public List<String> findDistinctBrands(){
+        return pcComponentRepository.findDistinctBrands();
+    }
+
 
 
 }
