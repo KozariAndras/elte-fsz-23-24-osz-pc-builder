@@ -41,9 +41,9 @@ public class ListComponentsController {
     }
 
     @PostMapping("/searchFilter")
-    public String search(@RequestParam("filter")FilterDTO filter){
-        
-
+    public String search(@ModelAttribute("filter")FilterDTO filter,Model model){
+        List<PCComponent> pcComponents = pcComponentService.findWithFilter(filter);
+        model.addAttribute("components",pcComponents);
         return "components";
     }
 }
