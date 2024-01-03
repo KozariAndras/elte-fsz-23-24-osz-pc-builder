@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -69,7 +71,13 @@
     </c:otherwise>
 </c:choose>
 
-
+<div>
+    <form:form method="post" action="/searchFilter" modelAttribute="filter">
+            <form:label path="brands">Brands: <br> </form:label>
+            <form:checkboxes items="${brands}" path="brands" delimiter="<br>"/> <br>
+            <form:button>Filter</form:button>
+    </form:form>
+</div>
 
 </body>
 <script src="<c:url value="js/index.js"/>"></script>

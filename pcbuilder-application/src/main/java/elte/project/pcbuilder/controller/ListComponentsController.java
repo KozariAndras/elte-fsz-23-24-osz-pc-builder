@@ -1,5 +1,6 @@
 package elte.project.pcbuilder.controller;
 
+import elte.project.pcbuilder.domain.DTOs.FilterDTO;
 import elte.project.pcbuilder.domain.components.PCComponent;
 import elte.project.pcbuilder.domain.user.Cart;
 import elte.project.pcbuilder.service.PCComponentService;
@@ -36,6 +37,13 @@ public class ListComponentsController {
     public String search(@RequestParam("search") String search,Model model){
         List<PCComponent> pcComponents = pcComponentService.findByName(search);
         model.addAttribute("components",pcComponents);
+        return "components";
+    }
+
+    @PostMapping("/searchFilter")
+    public String search(@RequestParam("filter")FilterDTO filter){
+        
+
         return "components";
     }
 }

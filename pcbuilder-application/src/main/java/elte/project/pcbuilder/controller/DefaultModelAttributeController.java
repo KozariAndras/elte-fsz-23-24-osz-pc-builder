@@ -1,5 +1,6 @@
 package elte.project.pcbuilder.controller;
 
+import elte.project.pcbuilder.domain.DTOs.FilterDTO;
 import elte.project.pcbuilder.domain.user.Cart;
 import elte.project.pcbuilder.service.PCComponentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,11 @@ public class DefaultModelAttributeController {
     @ModelAttribute("brands")
     public List<String> getBrands() {
         return pcComponentService.findDistinctBrands();
+    }
+
+    @ModelAttribute("filter")
+    public FilterDTO getFilter(){
+        return new FilterDTO();
     }
 
 }
