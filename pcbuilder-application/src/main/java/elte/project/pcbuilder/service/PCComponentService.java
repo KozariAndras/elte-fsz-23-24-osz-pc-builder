@@ -42,7 +42,8 @@ public class PCComponentService {
         List<PCComponent> pcComponents = pcComponentRepository.findAll();
         if(!filter.getBrands().isEmpty()){
             pcComponents = filterForBrands(filter, pcComponents);
-        } else if(isMinAndMaxNotNull(filter)){
+        }
+        if(isMinAndMaxNotNull(filter)){
             pcComponents = filterForPrice(filter, pcComponents);
         }
         return pcComponents;
