@@ -68,6 +68,10 @@
             </div>
     </c:otherwise>
 </c:choose>
+
+
+
+
 </body>
 <script src="<c:url value="js/index.js"/>"></script>
 </html>
