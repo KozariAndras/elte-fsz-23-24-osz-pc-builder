@@ -1,8 +1,10 @@
 package elte.project.pcbuilder.domain.DTOs;
 
 
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 public class UserDto {
 
@@ -12,10 +14,12 @@ public class UserDto {
 
     @NotNull
     @NotEmpty
+    @Size(min = 8, message = "Password must be at least 8 characters long")
     private String password;
 
     @NotNull
     @NotEmpty
+    @Size(min = 8, message = "Password confirmation must be at least 8 characters long")
     private String matchingPassword;
 
     public String getUsername() {

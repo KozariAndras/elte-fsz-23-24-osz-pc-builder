@@ -22,7 +22,7 @@
 <main>
     <div class="register-container">
         <h2>Registration Page</h2>
-        <p>${message}</p>
+        <p class="error">${message}</p>
             <form:form action="/register" modelAttribute="user" method="post">
                 <div>
                     <form:label path="username">Username:</form:label>
@@ -35,6 +35,8 @@
                         <br>
                 </div>
                 <div>
+
+
                     <form:label path="matchingPassword">Confirm Password:</form:label>
                     <form:input type="password" path="matchingPassword" required="true"/>
                 </div>

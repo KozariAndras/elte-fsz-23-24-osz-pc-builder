@@ -185,3 +185,8 @@ background: black;
 border-radius: 14%;
 color: white;
 }
+
+.error{
+color: red;
+font-size: 1.1rem;
+}
