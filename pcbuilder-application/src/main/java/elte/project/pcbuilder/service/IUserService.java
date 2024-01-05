@@ -5,5 +5,5 @@ import elte.project.pcbuilder.domain.user.User;
 
 public interface IUserService {
 
-    public User RegisterNewUser(UserDto userDto);
+    public User registerNewUser(UserDto userDto);
 }

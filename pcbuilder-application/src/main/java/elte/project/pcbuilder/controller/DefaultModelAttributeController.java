@@ -1,6 +1,7 @@
 package elte.project.pcbuilder.controller;
 
 import elte.project.pcbuilder.domain.DTOs.FilterDTO;
+import elte.project.pcbuilder.domain.DTOs.UserDto;
 import elte.project.pcbuilder.domain.user.Cart;
 import elte.project.pcbuilder.service.PCComponentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,4 +31,6 @@ public class DefaultModelAttributeController {
         return new FilterDTO();
     }
 
+    @ModelAttribute("user")
+    public UserDto getUser() {return new UserDto();}
 }

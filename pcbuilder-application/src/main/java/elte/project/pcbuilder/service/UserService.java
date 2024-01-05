@@ -18,7 +18,7 @@ public class UserService implements IUserService {
     private UserRepository userRepository;
 
     @Override
-    public User RegisterNewUser(UserDto userDto) throws UserAlreadyExistException {
+    public User registerNewUser(UserDto userDto) throws UserAlreadyExistException {
         if (usernameExists(userDto.getUsername())){
         throw new UserAlreadyExistException("The username " + userDto.getUsername() + " already exists.");
         }
@@ -27,6 +27,8 @@ public class UserService implements IUserService {
 
         credential.setUsername(userDto.getUsername());
         credential.setPassword(userDto.getPassword());
+
+        credential.setUser(user);
         user.setCredential(credential);
 
         user.setRole(Role.USER);
