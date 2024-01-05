@@ -34,7 +34,7 @@ public class Credential {
     }
 
     public String getUsername() {
-        return this.username;
+        return username;
     }
 
     public void setUsername(String username) {
