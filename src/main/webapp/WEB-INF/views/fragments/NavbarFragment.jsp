@@ -16,6 +16,7 @@
             </div>
         </li>
         <li class="floatright"><a href="/login">Login</a></li>
+        <li class="floatright"><a href="/register">Register</a></li>
         <li class="floatright"><a href="/cart">Cart</a></li>
     </ul>
 </nav>
