@@ -14,5 +14,9 @@ public interface PCComponentRepository extends CrudRepository<PCComponent,Intege
         <T extends PCComponent> List<T> findPCComponent(@Param("type") Class<T> type);
 
         List<PCComponent> findByNameContainingIgnoreCase(String search);
+        @Query("select distinct brand from PCComponent")
+        List<String> findDistinctBrands();
+
+        List<PCComponent> findAll();
 
 }
