@@ -16,17 +16,17 @@
         <form:form action="/register" modelAttribute="user" method="post">
             <div>
                 <form:label path="username">Username:</form:label>
-                    <form:input type="text" path="username" required/>
+                    <form:input type="text" path="username" required="true"/>
                     <br>
             </div>
             <div>
                 <form:label path="password">Password:</form:label>
-                    <form:input path="password" type="password" required/>
+                    <form:input path="password" type="password" required="true"/>
                     <br>
             </div>
             <div>
                 <form:label path="matchingPassword">Confirm Password:</form:label>
-                <form:input type="password" path="matchingPassword" required/>
+                <form:input type="password" path="matchingPassword" required="true"/>
             </div>
             <!-- Add other fields related to user registration -->
             <br>

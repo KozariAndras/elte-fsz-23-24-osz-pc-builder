@@ -1,6 +1,7 @@
 package elte.project.pcbuilder.controller;
 
 import elte.project.pcbuilder.domain.DTOs.FilterDTO;
+import elte.project.pcbuilder.domain.DTOs.UserDto;
 import elte.project.pcbuilder.domain.user.Cart;
 import elte.project.pcbuilder.domain.user.User;
 import elte.project.pcbuilder.service.PCComponentService;
@@ -32,8 +33,8 @@ public class DefaultModelAttributeController {
     }
 
     @ModelAttribute("user")
-    public User getUser(){
-        return new User();
+    public UserDto getUser(){
+        return new UserDto();
     }
 }
 

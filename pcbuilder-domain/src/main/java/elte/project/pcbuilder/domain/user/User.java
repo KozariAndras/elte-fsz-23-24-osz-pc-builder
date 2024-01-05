@@ -2,6 +2,7 @@ package elte.project.pcbuilder.domain.user;
 
 import elte.project.pcbuilder.domain.enums.Role;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class User {
     @Id
     @GeneratedValue
     private int id;
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Credential credential;
     @Enumerated(EnumType.STRING)
     private Role role;

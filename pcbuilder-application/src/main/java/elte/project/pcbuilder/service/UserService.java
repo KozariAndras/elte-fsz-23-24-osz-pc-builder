@@ -29,6 +29,8 @@ public class UserService implements IUserService {
 
         credential.setUsername(userDto.getUsername());
         credential.setPassword(userDto.getPassword());
+        credential.setUser(user);
+        user.setCredential(credential);
 
         user.setRole(Role.USER);
 
@@ -36,7 +38,7 @@ public class UserService implements IUserService {
     }
 
     private boolean usernameExists(String username) {
-        return userRepository.findUserByCredentialUsername(username) != null;
+        return userRepository.findUserByCredentialUsername(username).isPresent();
     }
 
 }
