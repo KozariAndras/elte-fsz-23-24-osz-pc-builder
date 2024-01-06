@@ -20,7 +20,7 @@
     <div class="login-container">
         <h2>Sign in</h2>
         <p class="error">${message}</p>
-            <form:form action="/login" modelAttribute="user" method="post">
+            <form:form action="/login" modelAttribute="loginUser" method="post">
                 <div>
                     <form:label path="username">Username:</form:label>
                     <form:input type="text" path="username" placeholder="Username" required="true"/>
@@ -29,8 +29,8 @@
                 <div>
                     <form:label path="password">Password:</form:label>
                     <form:input type="password" path="password" placeholder="Password" required="true"/>
-                    <br>
                 </div>
+                <br>
                 <form:button>Login</form:button>
             </form:form>
     </div>

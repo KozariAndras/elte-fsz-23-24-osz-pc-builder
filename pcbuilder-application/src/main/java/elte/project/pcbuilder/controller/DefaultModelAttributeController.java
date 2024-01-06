@@ -7,6 +7,7 @@ import elte.project.pcbuilder.service.PCComponentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import elte.project.pcbuilder.domain.DTOs.UserLoginDto;
 
 import java.util.List;
 
@@ -33,4 +34,8 @@ public class DefaultModelAttributeController {
 
     @ModelAttribute("user")
     public UserDto getUser() {return new UserDto();}
+
+    @ModelAttribute("loginUser")
+    public UserLoginDto getLoginUser() {return new UserLoginDto();}
+
 }

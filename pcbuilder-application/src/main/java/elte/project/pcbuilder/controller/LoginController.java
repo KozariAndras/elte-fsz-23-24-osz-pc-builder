@@ -33,8 +33,8 @@ public class LoginController {
 
     @PostMapping("/login")
     public ModelAndView logInUser(
-            @ModelAttribute("user") @Valid UserLoginDto userLoginDto,
-            @RequestParam("userId") int id,
+            @ModelAttribute("loginUser") @Valid UserLoginDto userLoginDto,
+
             BindingResult bindingResult,
             HttpServletRequest request) {
 
