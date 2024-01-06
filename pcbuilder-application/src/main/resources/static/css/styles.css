@@ -173,13 +173,19 @@ ul.navbar li:hover .dropdown-content {
     font-weight:bold;
 }
 
-.register-container{
+.register-container, .login-container{
 text-align: center;
 padding: 3rem;
 font-size: 2rem;
 }
 
 .register-container button{
+padding: 2%;
+background: black;
+border-radius: 14%;
+color: white;
+}
+.login-container button{
 padding: 2%;
 background: black;
 border-radius: 14%;

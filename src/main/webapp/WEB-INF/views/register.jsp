@@ -1,8 +1,4 @@
 
-
-
-
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -17,7 +13,7 @@
 
 <header>
 <jsp:include page="fragments/NavbarWithSearchFragment.jsp"></jsp:include>
-<header>
+</header>
 
 <main>
     <div class="register-container">
@@ -26,21 +22,18 @@
             <form:form action="/register" modelAttribute="user" method="post">
                 <div>
                     <form:label path="username">Username:</form:label>
-                        <form:input type="text" path="username" required="true"/>
+                        <form:input type="text" path= placeholder="Username" required="true"/>
                         <br>
                 </div>
                 <div>
                     <form:label path="password">Password:</form:label>
-                        <form:input type="password" path="password" required="true"/>
+                        <form:input type="password" path="password" placeholder="Password" required="true"/>
                         <br>
                 </div>
                 <div>
-
-
                     <form:label path="matchingPassword">Confirm Password:</form:label>
-                    <form:input type="password" path="matchingPassword" required="true"/>
+                    <form:input type="password" path="matchingPassword" placeholder="Confirm Password" required="true"/>
                 </div>
-                <!-- Add other fields related to user registration -->
                 <br>
                 <form:button>Register</form:button>
             </form:form>
