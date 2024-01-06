@@ -32,14 +32,9 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public ModelAndView logInUser(
-            @ModelAttribute("loginUser") @Valid UserLoginDto userLoginDto,
-
-            BindingResult bindingResult,
-            HttpServletRequest request) {
-
+    public ModelAndView logInUser(@ModelAttribute("loginUser")
+                                      @Valid UserLoginDto userLoginDto,BindingResult bindingResult,HttpServletRequest request) {
         ModelAndView mav = new ModelAndView();
-
         // Validate user input
         if (bindingResult.hasErrors()) {
             StringBuilder errorMessages = new StringBuilder();
@@ -57,8 +52,7 @@ public class LoginController {
             if (supposedExistingUser.isPresent()) {
                 User foundUser = supposedExistingUser.get();
                 if (userService.validatePassword(foundUser, userLoginDto.getPassword())) {
-
-                    request.getSession().setAttribute("user", supposedExistingUser);
+                    request.getSession().setAttribute("loggedInUser", supposedExistingUser.get());
                     mav.setViewName("redirect:/");
                 } else {
                     throw new InvalidPasswordException("Invalid Password");
@@ -72,4 +66,11 @@ public class LoginController {
         }
         return mav;
     }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request){
+        request.getSession().removeAttribute("loggedInUser");
+        return "redirect:" + request.getHeader("referer");
+    }
+
 }

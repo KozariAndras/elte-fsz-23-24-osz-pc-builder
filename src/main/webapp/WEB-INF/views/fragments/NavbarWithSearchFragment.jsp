@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <nav>
   <ul class="navbar">
     <li class=""><a href="/">Home</a></li>
@@ -22,8 +23,16 @@
       </form>
     </li>
 
-    <li class="floatright"><a href="/login">Login</a></li>
-    <li class="floatright"><a href="/register">Register</a></li>
     <li class="floatright"><a href="/cart">Cart</a></li>
+    <c:choose>
+        <c:when test = "${loggedInUser != null}">
+            <li class="floatright"><a href="/logout">Logout</a></li>
+            <li><p class="floatright">Welcome, ${loggedInUser.getCredential().getUsername()}!</p></li>
+        </c:when>
+        <c:otherwise>
+            <li class="floatright"><a href="/login">Login</a></li>
+            <li class="floatright"><a href="/register">Register</a></li>
+        </c:otherwise>
+    </c:choose>
   </ul>
 </nav>

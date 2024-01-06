@@ -156,7 +156,7 @@ public class TestDataGenerator {
         user = new User();
         credential = new Credential();
         credential.setUsername("user");
-        credential.setPassword("user");
+        credential.setPassword("user12345");
         credential.setUser(user);
         user.setCredential(credential);
         user.setRole(Role.USER);
