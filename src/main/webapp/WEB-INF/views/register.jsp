@@ -22,7 +22,7 @@
             <form:form action="/register" modelAttribute="user" method="post">
                 <div>
                     <form:label path="username">Username:</form:label>
-                        <form:input type="text" path= placeholder="Username" required="true"/>
+                        <form:input type="text" path="username" placeholder="Username" required="true"/>
                         <br>
                 </div>
                 <div>
