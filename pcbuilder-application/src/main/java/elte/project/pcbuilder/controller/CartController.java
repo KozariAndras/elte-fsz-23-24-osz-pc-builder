@@ -55,10 +55,13 @@ public class CartController {
     }
 
     @PostMapping("/addToCart")
-    public String addToCart(@ModelAttribute("cart") Cart cart, @RequestParam("componentId") int id, HttpServletRequest request){
+    public String addToCart(@ModelAttribute("cart") Cart cart, @RequestParam("componentId") int id, HttpServletRequest request,Model model){
         String referer = request.getHeader("referer");
         PCComponent requestedComponent = pcComponentService.findById(id);
         cart.getPcComponents().add(requestedComponent);
+        if(referer.endsWith("searchFilter")){
+            return "redirect:/";
+        }
         return "redirect:" + referer;
     }
 
