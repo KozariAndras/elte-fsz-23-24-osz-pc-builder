@@ -4,6 +4,7 @@ import elte.project.pcbuilder.domain.DTOs.CheckoutDTO;
 import elte.project.pcbuilder.domain.DTOs.PCComponentDTO;
 import elte.project.pcbuilder.domain.components.PCComponent;
 import elte.project.pcbuilder.domain.user.Cart;
+import elte.project.pcbuilder.domain.user.User;
 import elte.project.pcbuilder.service.AuthenticationService;
 import elte.project.pcbuilder.service.CartService;
 import elte.project.pcbuilder.service.OrderService;
@@ -13,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.*;
 
@@ -51,10 +55,13 @@ public class CartController {
     }
 
     @PostMapping("/addToCart")
-    public String addToCart(@ModelAttribute("cart") Cart cart, @RequestParam("componentId") int id, HttpServletRequest request){
+    public String addToCart(@ModelAttribute("cart") Cart cart, @RequestParam("componentId") int id, HttpServletRequest request,Model model){
         String referer = request.getHeader("referer");
         PCComponent requestedComponent = pcComponentService.findById(id);
         cart.getPcComponents().add(requestedComponent);
+        if(referer.endsWith("searchFilter")){
+            return "redirect:/";
+        }
         return "redirect:" + referer;
     }
 
@@ -73,12 +80,17 @@ public class CartController {
     }
 
     @PostMapping("/checkout")
-    public String checkout(@ModelAttribute("cart") Cart cart, HttpServletRequest request){
-        String referer = request.getHeader("referer");
-        //TODO: add authentication and actual logged in user as parameter
-        //orderService.create(cart.getPcComponents(),authenticationService.getCurrentUser());
-        cart.getPcComponents().clear();
-        return "redirect:" + referer;
+    public ModelAndView checkout(@ModelAttribute("cart") Cart cart, HttpServletRequest request, RedirectAttributes rv){
+        User loggedInUser = (User) request.getSession().getAttribute("loggedInUser");
+        if (loggedInUser != null){
+            orderService.create(cart.getPcComponents(),loggedInUser);
+            cart.getPcComponents().clear();
+            rv.addFlashAttribute("successMessage","Items were successfully ordered!");
+            return new ModelAndView(new RedirectView("/cart"));
+        }
+        else{
+            return new ModelAndView(new RedirectView("/login"));
+        }
     }
 
 }

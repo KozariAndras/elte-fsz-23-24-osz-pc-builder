@@ -22,9 +22,7 @@ public class OrderService {
         order.setStatus(OrderStatusType.INCOMPLETE);
         order.setUser(user);
         order.setPcComponents(items);
-
         orderRepository.save(order);
-
         items.clear();
 
     }
@@ -40,13 +38,5 @@ public class OrderService {
         return orderList;
     }
 
-
-    public void complete(int id){
-        Optional<Order> order = orderRepository.findOrderById(id);
-        if(order.isPresent()){
-            order.get().setStatus(OrderStatusType.COMPLETED);
-            orderRepository.save(order.get());
-        }
-    }
 
 }

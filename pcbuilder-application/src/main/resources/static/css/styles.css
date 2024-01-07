@@ -151,6 +151,10 @@ ul.navbar li:hover .dropdown-content {
     text-align: center;
 }
 
+.greenColor {
+    color: green;
+}
+
 /* ---------- */
 
 
@@ -171,4 +175,30 @@ ul.navbar li:hover .dropdown-content {
 
 .boldFont{
     font-weight:bold;
+}
+
+.register-container,
+.login-container{
+text-align: center;
+padding: 3rem;
+font-size: 2rem;
+}
+
+.register-container button{
+padding: 1.4%;
+background: black;
+border-radius: 14%;
+color: white;
+}
+
+.login-container button{
+padding: 1.4%;
+background: black;
+border-radius: 14%;
+color: white;
+}
+
+.error{
+color: red;
+font-size: 1.1rem;
 }

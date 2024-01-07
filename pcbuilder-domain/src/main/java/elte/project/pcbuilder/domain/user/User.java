@@ -12,7 +12,7 @@ public class User {
     @Id
     @GeneratedValue
     private int id;
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Credential credential;
     @Enumerated(EnumType.STRING)
     private Role role;

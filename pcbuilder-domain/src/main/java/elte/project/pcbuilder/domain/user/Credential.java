@@ -11,7 +11,7 @@ public class Credential {
     @GeneratedValue
     private int id;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private User user;
     private String username;
     private String password;
