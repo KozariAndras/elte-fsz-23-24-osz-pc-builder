@@ -14,6 +14,7 @@
 <main>
 <c:choose>
     <c:when test = "${Data.getItems().isEmpty()}">
+        <div class="textcenter greenColor"><a>${successMessage}</a></div> <br>
         <div class="textcenter"><a>Your cart is currently empty!</a></div>
     </c:when>
     <c:otherwise>
@@ -72,6 +73,8 @@
         </div>
     </c:otherwise>
 </c:choose>
+<div class="textcenter"><a href="/orderHistory">Order history</a></div>
+
 </main>
 
 <footer>

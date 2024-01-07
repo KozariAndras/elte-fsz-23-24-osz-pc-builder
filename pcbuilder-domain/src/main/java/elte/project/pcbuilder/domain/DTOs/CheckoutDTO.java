@@ -12,7 +12,6 @@ public class CheckoutDTO {
     private BigDecimal totalPrice;
 
     public CheckoutDTO(){
-
     }
 
     public CheckoutDTO(BigDecimal total){

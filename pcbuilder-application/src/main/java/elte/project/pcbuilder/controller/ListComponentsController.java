@@ -19,6 +19,11 @@ public class ListComponentsController {
     @Autowired
     private PCComponentService pcComponentService;
 
+    @ModelAttribute("brands")
+    public List<String> getBrands() {
+        return pcComponentService.findDistinctBrands();
+    }
+
     @GetMapping("/")
     public String listComponents(Model model){
         List<PCComponent> allComponents = new ArrayList<>();

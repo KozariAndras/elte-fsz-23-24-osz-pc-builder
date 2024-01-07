@@ -15,6 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.*;
 
@@ -75,19 +77,17 @@ public class CartController {
     }
 
     @PostMapping("/checkout")
-    public ModelAndView checkout(@ModelAttribute("cart") Cart cart, HttpServletRequest request){
-
-        ModelAndView mav = new ModelAndView();
+    public ModelAndView checkout(@ModelAttribute("cart") Cart cart, HttpServletRequest request, RedirectAttributes rv){
         User loggedInUser = (User) request.getSession().getAttribute("loggedInUser");
         if (loggedInUser != null){
             orderService.create(cart.getPcComponents(),loggedInUser);
             cart.getPcComponents().clear();
-            mav.setViewName("redirect:cart");
+            rv.addFlashAttribute("successMessage","Items were successfully ordered!");
+            return new ModelAndView(new RedirectView("/cart"));
         }
         else{
-            mav.setViewName("redirect:login");
+            return new ModelAndView(new RedirectView("/login"));
         }
-        return mav;
     }
 
 }

@@ -14,17 +14,9 @@ import java.util.List;
 @ControllerAdvice
 public class DefaultModelAttributeController {
 
-    @Autowired
-    private PCComponentService pcComponentService;
-
     @ModelAttribute("cart")
     public Cart getCart() {
         return new Cart();
-    }
-
-    @ModelAttribute("brands")
-    public List<String> getBrands() {
-        return pcComponentService.findDistinctBrands();
     }
 
     @ModelAttribute("filter")
